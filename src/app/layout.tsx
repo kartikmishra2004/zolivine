@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-transparent text-white overflow-y-scroll">
         {children}
       </body>
     </html>

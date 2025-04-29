@@ -19,6 +19,39 @@
   }
 }
 
+@font-face {
+  font-family: 'editorialNew';
+  src: url('/fonts/editorial-new/PPEditorialNew-Ultrabold-BF644b21500840c.otf') format('otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #424242;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #969696;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+::selection {
+  background: #184b3f;
+  color: white;
+}
+
+.font-editorialNew {
+  font-family: 'editorialNew';
+  font-style: italic;
+  letter-spacing: -1px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
