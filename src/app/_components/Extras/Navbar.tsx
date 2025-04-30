@@ -82,7 +82,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav ref={navRef} className={`fixed z-50 px-20 flex justify-between items-center w-full h-[4.5rem] transition-colors duration-300 ${scrolled ? "bg-zinc-50 text-zinc-700 shadow" : "text-zinc-50"}`}>
+        <nav ref={navRef} className={`fixed z-40 px-20 flex justify-between items-center w-full h-[4.5rem] transition-colors duration-300 ${scrolled ? "bg-zinc-50 text-zinc-700 shadow" : "text-zinc-50"}`}>
             <Link href="/" className="w-32">
                 <h1 className="font-playball text-[1.7rem]">Zolivine</h1>
             </Link>

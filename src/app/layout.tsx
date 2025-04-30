@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/app/_components/Extras/Navbar";
 import LennisWrapper from "@/utils/LenisWrapper";
+import Preloader from "@/app/_components/Extras/Preloader";
 
 export const metadata: Metadata = {
   title: "Zolivine - Nature's Golden Essence",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <LennisWrapper>
         <body className="bg-transparent text-white overflow-y-scroll">
+          <Preloader />
           <Navbar />
           {children}
         </body>
