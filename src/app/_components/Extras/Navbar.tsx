@@ -100,10 +100,10 @@ export default function Navbar() {
                 <h1 className="font-playball text-[1.7rem]">Zolivine</h1>
             </Link>
             <ul className="flex text-[10px] font-semibold gap-12 tracking-wider">
-                <li onMouseEnter={handleShopOn} onMouseLeave={handleShopOff} className="relative overflow-hidden"><Link href="/shop">SHOP<span ref={shopRef} className="w-full absolute left-[-100%] bottom-0 h-[1px] bg-zinc-50"></span></Link></li>
-                <li onMouseEnter={handlePhiOn} onMouseLeave={handlePhiOff} className="relative overflow-hidden"><Link href="/philosophy">PHILOSOPHY<span ref={philosophyRef} className="w-full absolute left-[-100%] bottom-0 h-[1px] bg-zinc-50"></span></Link></li>
-                <li onMouseEnter={handleGalleryOn} onMouseLeave={handleGalleryOff} className="relative overflow-hidden"><Link href="/gallery">GALLERY<span ref={galleryRef} className="w-full absolute left-[-100%] bottom-0 h-[1px] bg-zinc-50"></span></Link></li>
-                <li onMouseEnter={handleJournalOn} onMouseLeave={handleJournalOff} className="relative overflow-hidden"><Link href="/journal">JOURNAL<span ref={journalRef} className="w-full absolute left-[-100%] bottom-0 h-[1px] bg-zinc-50"></span></Link></li>
+                <li onMouseEnter={handleShopOn} onMouseLeave={handleShopOff} className="relative overflow-hidden"><Link href="/shop">SHOP<span ref={shopRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
+                <li onMouseEnter={handlePhiOn} onMouseLeave={handlePhiOff} className="relative overflow-hidden"><Link href="/philosophy">PHILOSOPHY<span ref={philosophyRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
+                <li onMouseEnter={handleGalleryOn} onMouseLeave={handleGalleryOff} className="relative overflow-hidden"><Link href="/gallery">GALLERY<span ref={galleryRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
+                <li onMouseEnter={handleJournalOn} onMouseLeave={handleJournalOff} className="relative overflow-hidden"><Link href="/journal">JOURNAL<span ref={journalRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
             </ul>
             <div className={`w-32 rounded-4xl h-12 px-5 items-center ${scrolled ? "bg-zinc-700" : "bg-zinc-50"} transition-colors duration-300 flex justify-around`}>
                 <button className="cursor-pointer">
