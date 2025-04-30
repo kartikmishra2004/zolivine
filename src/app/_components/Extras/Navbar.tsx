@@ -1,18 +1,41 @@
 "use client";
-import { useRef, useState } from "react";
+import { RefObject, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const navRef = useRef(null);
-    const shopRef = useRef(null);
-    const philosophyRef = useRef(null);
-    const galleryRef = useRef(null);
-    const journalRef = useRef(null);
-    const lastScrollY = useRef(0);
+    const [scrolled, setScrolled] = useState<boolean>(false);
+    const navRef = useRef<HTMLElement | null>(null);
+    const shopRef = useRef<HTMLSpanElement | null>(null);
+    const philosophyRef = useRef<HTMLSpanElement | null>(null);
+    const galleryRef = useRef<HTMLSpanElement | null>(null);
+    const journalRef = useRef<HTMLSpanElement | null>(null);
+    const lastScrollY = useRef<number>(0);
+
+    const navItems = [
+        {
+            name: "SHOP",
+            ref: shopRef,
+            src: "/shop",
+        },
+        {
+            name: "PHILOSOPHY",
+            ref: philosophyRef,
+            src: "/philosophy",
+        },
+        {
+            name: "GALLERY",
+            ref: galleryRef,
+            src: "/gallery",
+        },
+        {
+            name: "JOURNAL",
+            ref: journalRef,
+            src: "/journal",
+        },
+    ];
 
     useGSAP(() => {
         const handleScroll = () => {
@@ -43,52 +66,16 @@ export default function Navbar() {
     }, []);
 
     // Underline On
-    const handleShopOn = () => {
-        gsap.to(shopRef.current, {
-            left: 0,
-            duration: 0.3,
-        });
-    }
-    const handlePhiOn = () => {
-        gsap.to(philosophyRef.current, {
-            left: 0,
-            duration: 0.3,
-        });
-    }
-    const handleGalleryOn = () => {
-        gsap.to(galleryRef.current, {
-            left: 0,
-            duration: 0.3,
-        });
-    }
-    const handleJournalOn = () => {
-        gsap.to(journalRef.current, {
+    const handleLineOn = (ref: RefObject<HTMLSpanElement | null>) => {
+        gsap.to(ref.current, {
             left: 0,
             duration: 0.3,
         });
     }
 
     // Underline Off
-    const handleShopOff = () => {
-        gsap.to(shopRef.current, {
-            left: '-100%',
-            duration: 0.3,
-        });
-    }
-    const handlePhiOff = () => {
-        gsap.to(philosophyRef.current, {
-            left: '-100%',
-            duration: 0.3,
-        });
-    }
-    const handleGalleryOff = () => {
-        gsap.to(galleryRef.current, {
-            left: '-100%',
-            duration: 0.3,
-        });
-    }
-    const handleJournalOff = () => {
-        gsap.to(journalRef.current, {
+    const handleLineOff = (ref: RefObject<HTMLSpanElement | null>) => {
+        gsap.to(ref.current, {
             left: '-100%',
             duration: 0.3,
         });
@@ -100,10 +87,9 @@ export default function Navbar() {
                 <h1 className="font-playball text-[1.7rem]">Zolivine</h1>
             </Link>
             <ul className="flex text-[10px] font-semibold gap-12 tracking-wider">
-                <li onMouseEnter={handleShopOn} onMouseLeave={handleShopOff} className="relative overflow-hidden"><Link href="/shop">SHOP<span ref={shopRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
-                <li onMouseEnter={handlePhiOn} onMouseLeave={handlePhiOff} className="relative overflow-hidden"><Link href="/philosophy">PHILOSOPHY<span ref={philosophyRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
-                <li onMouseEnter={handleGalleryOn} onMouseLeave={handleGalleryOff} className="relative overflow-hidden"><Link href="/gallery">GALLERY<span ref={galleryRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
-                <li onMouseEnter={handleJournalOn} onMouseLeave={handleJournalOff} className="relative overflow-hidden"><Link href="/journal">JOURNAL<span ref={journalRef} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
+                {navItems.map((item, id) => (
+                    <li key={id} onMouseEnter={() => handleLineOn(item.ref)} onMouseLeave={() => handleLineOff(item.ref)} className="relative overflow-hidden"><Link href={item.src}>{item.name}<span ref={item.ref} className={`w-full absolute left-[-100%] bottom-0 h-[1px] ${scrolled ? "bg-zinc-700" : "bg-zinc-50"}`}></span></Link></li>
+                ))}
             </ul>
             <div className={`w-32 rounded-4xl h-12 px-5 items-center ${scrolled ? "bg-zinc-700" : "bg-zinc-50"} transition-colors duration-300 flex justify-around`}>
                 <button className="cursor-pointer">

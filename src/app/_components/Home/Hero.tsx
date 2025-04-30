@@ -10,16 +10,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
 
-    const heroTitle1Ref = useRef(null);
-    const heroTitle2Ref = useRef(null);
-    const heroPara1Ref = useRef(null);
-    const heroPara2Ref = useRef(null);
-    const buttonRef = useRef(null);
-    const ScreenRef = useRef(null);
-    const videoRef = useRef(null);
-    const rightIconRef = useRef(null);
-    const rightArrow = useRef(null);
-    const leftArrow = useRef(null);
+    const heroTitle1Ref = useRef<HTMLDivElement | null>(null);
+    const heroTitle2Ref = useRef<HTMLDivElement | null>(null);
+    const heroPara1Ref = useRef<HTMLParagraphElement | null>(null);
+    const heroPara2Ref = useRef<HTMLParagraphElement | null>(null);
+    const buttonRef = useRef<HTMLAnchorElement | null>(null);
+    const ScreenRef = useRef<HTMLElement | null>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const rightIconRef = useRef<HTMLSpanElement | null>(null);
+    const rightArrow = useRef<SVGSVGElement | null>(null);
+    const leftArrow = useRef<SVGSVGElement | null>(null);
 
     useGSAP(() => {
 
