@@ -80,7 +80,7 @@ export default function Preloader() {
     return (
         <>
             <section ref={leftBgRef} className="fixed top-0 left-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"> </section>
-            <div className="w-full h-screen flex justify-center items-center fixed z-[9999]">
+            <div className={`w-full h-screen ${loading ? "flex" : "hidden"} justify-center items-center fixed z-[9999]`}>
                 <span className="overflow-hidden">
                     <h1 ref={logo1Ref} className="font-playball -translate-y-[100%] text-5xl text-zinc-50 px-0.5">Zoli</h1>
                 </span>
