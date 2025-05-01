@@ -38,30 +38,30 @@ export default function Hero() {
         gsap.from(heroTitle1Ref.current, {
             y: 100,
             duration: 1,
-            delay: 2.7
+            delay: 5.6,
         });
 
         gsap.from(heroTitle2Ref.current, {
             y: 100,
             duration: 0.9,
-            delay: 2.9
+            delay: 5.8,
         });
 
         gsap.from(heroPara1Ref.current, {
             y: 100,
             duration: 0.9,
-            delay: 2.9
+            delay: 5.8,
         });
 
         gsap.from(heroPara2Ref.current, {
             y: 100,
             duration: 0.9,
-            delay: 2.9
+            delay: 5.8,
         });
 
         gsap.from(buttonRef.current, {
             scale: 0,
-            delay: 3,
+            delay: 5.9,
             duration: 1.5,
             ease: 'power4.out',
         });
