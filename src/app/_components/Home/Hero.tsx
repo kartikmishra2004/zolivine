@@ -122,7 +122,7 @@ export default function Hero() {
                                 <span className="font-editorialNew">True</span> to Essence,
                             </div>
                         </div>
-                        <div className="overflow-hidden b h-22 w-max">
+                        <div className="overflow-hidden b h-22 w-max px-2">
                             <div ref={heroTitle2Ref} className="">
                                 kind to <span className="font-editorialNew">Nature</span>
                             </div>
@@ -142,7 +142,6 @@ export default function Hero() {
                     <span ref={rightIconRef} className="w-12 h-12 overflow-hidden bg-zinc-700 rounded-full absolute right-2 flex justify-center items-center"><MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3.5" /><MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3.5 absolute" /></span>
                 </Link>
             </div>
-
         </section>
     )
 }

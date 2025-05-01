@@ -1,18 +1,29 @@
 "use client"
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Preloader() {
+
     const [loading, setLoading] = useState(true);
     const leftBgRef = useRef(null);
     const rightBgRef = useRef(null);
     const lineRef = useRef(null);
 
     useEffect(() => {
+
         if (loading) {
-            document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
         }
 
+        setTimeout(() => {
+            setLoading(false);
+            document.body.style.position = "static";
+        }, 1700);
+
+    }, [loading]);
+
+    useGSAP(() => {
         const tl = gsap.timeline();
 
         tl.to(lineRef.current, {
@@ -38,12 +49,7 @@ export default function Preloader() {
             delay: 0.1,
             ease: 'power4.inOut'
         }, 'x');
-
-        setTimeout(() => {
-            setLoading(false);
-            document.body.style.overflow = "auto";
-        }, 1700);
-    }, [loading]);
+    });
 
     return (
         <>
