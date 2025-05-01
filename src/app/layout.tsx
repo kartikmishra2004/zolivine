@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <LennisWrapper>
-        <body className="text-zinc-50 overflow-y-auto w-full">
+        <body className="text-zinc-50 overflow-y-auto overflow-x-hidden w-full">
           <Preloader />
           <Navbar />
           {children}
