@@ -67,3 +67,9 @@ body {
   color: var(--foreground);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+@media (max-width: 1180px) {
+  .man-image{
+    display: none;
+  }
+}

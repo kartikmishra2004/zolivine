@@ -1,11 +1,11 @@
 import Hero from "@/app/_components/Home/Hero";
-import Second from "@/app/_components/Home/Second";
+import Features from "@/app/_components/Home/Features";
 
 export default function Home() {
   return (
     <section>
       <Hero />
-      <Second />
+      <Features />
     </section>
   );
 }
