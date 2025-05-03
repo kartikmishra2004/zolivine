@@ -5,7 +5,7 @@ import Lenis from "@studio-freight/lenis";
 const LennisWrapper = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         const lenis = new Lenis({
-            lerp: 0.1,
+            lerp: 0.15,
             smoothWheel: true,
         });
 
