@@ -43,26 +43,26 @@ export default function Features() {
     }, 'a');
 
     tl.to(box1Ref.current, {
-      y: -100
+      y: -300
     }, 'a');
 
     tl.to(box2Ref.current, {
-      y: -250,
+      y: -500,
     }, 'a');
 
     tl.to(box3Ref.current, {
-      y: -120
+      y: -600
     }, 'a');
 
     tl.to(box4Ref.current, {
-      y: -80,
+      y: -400,
     }, 'a');
 
   });
 
   return (
     <section ref={overlayRef} className="w-full h-max bg-zinc-50">
-      <div className="w-full px-20 py-14 h-[50vh] flex">
+      <div className="w-full px-20 py-14 h-[340px] flex">
         <div className="w-1/2 relative h-full flex flex-col gap-7">
           <h1 className="text-6xl text-zinc-700 font-semibold tracking-wider">
             PURE, RARE, <br />
@@ -74,23 +74,23 @@ export default function Features() {
           <h1 className="absolute underline font-semibold bottom-0 right-14 text-7xl font-editorialNew text-zinc-700 leading-20 tracking-tighter">fragrance.</h1>
         </div>
       </div>
-      <div className="h-[170vh] w-full relative overflow-hidden">
-        <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 left-[20%] w-[15rem] top-[10%] h-[20rem] rounded-xl z-30">
+      <div className="h-[1150px] w-full relative overflow-hidden">
+        <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 left-[20%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Botanical Alchemy</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Blended with rare botanicals and golden essences, our perfumes are rooted in nature's finest.</p>
         </div>
-        <div ref={box2Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] left-[3%] bottom-[35%] h-[20rem] rounded-xl z-30">
+        <div ref={box2Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] left-[3%] bottom-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><FlaskConical className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 font-semibold text-center">Crafted<br /> in Small Batches</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Each scent is hand-poured in limited runs, ensuring exclusivity, quality, and attention to detail.</p>
         </div>
-        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[20%] bottom-0 h-[20rem] rounded-xl z-30">
+        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[20%] -bottom-[40%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><ShieldCheck className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Pure, <br /> No Compromise</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Free from harmful additives. Only pure natural extracts and clean ingredients go into every bottle.</p>
         </div>
-        <div ref={box4Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[3%] bottom-[27.5%] h-[20rem] rounded-xl z-30">
+        <div ref={box4Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[3%] bottom-0 h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Search className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Honest Luxury</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
