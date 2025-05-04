@@ -17,6 +17,9 @@ export default function Features() {
   const box2Ref = useRef(null);
   const box3Ref = useRef(null);
   const box4Ref = useRef(null);
+  const heading1Ref = useRef(null);
+  const heading2Ref = useRef(null);
+  const lineRef = useRef(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -25,7 +28,6 @@ export default function Features() {
         start: "-20%",
         end: '120%',
         scrub: true,
-        markers: true,
       }
     });
 
@@ -61,20 +63,55 @@ export default function Features() {
       y: -400,
     }, 'a');
 
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: overlayRef.current,
+        start: '-25%',
+      }
+    });
+
+    tl2.from(heading1Ref.current, {
+      y: 60,
+      duration: 0.8,
+      ease: 'power4.out',
+    }, 'x');
+
+    tl2.from(heading2Ref.current, {
+      y: 60,
+      duration: 0.8,
+      delay: 0.1,
+      ease: 'power4.out',
+    }, 'x');
+
+    tl2.from(lineRef.current, {
+      width: 0,
+      ease: 'power4.out',
+      delay: 0.6
+    }, 'x');
+
   });
 
   return (
     <section ref={overlayRef} className="w-full h-max bg-zinc-50">
       <div className="w-full px-20 py-14 h-[340px] flex">
         <div className="w-1/2 relative h-full flex flex-col gap-7">
-          <h1 className="text-6xl text-zinc-700 font-semibold tracking-wider">
-            PURE, RARE, <br />
-            SOPHISTICATION
-          </h1>
-          <p className="text-xs tracking-wide text-zinc-700 w-[35%]">
+          <div className="">
+            <div className="overflow-hidden">
+              <h1 ref={heading1Ref} className="text-6xl text-zinc-700 font-semibold tracking-wider">
+                PURE, RARE,
+              </h1>
+            </div>
+            <div className="overflow-hidden">
+              <h1 ref={heading2Ref} className="text-6xl text-zinc-700 font-semibold tracking-wider">
+                SOPHISTICATION
+              </h1>
+            </div>
+          </div>
+          <p className="text-xs tracking-wide text-zinc-700 w-[40%]">
             Small-batch perfumes with golden notes and pure botanicals — no compromises.
           </p>
-          <h1 className="absolute underline font-semibold bottom-0 right-14 text-7xl font-editorialNew text-zinc-700 leading-20 tracking-tighter">fragrance.</h1>
+          <h1 className="absolute font-semibold bottom-[15px] right-0 text-7xl font-editorialNew text-zinc-700 tracking-tighter">fragrance.</h1>
+          <div ref={lineRef} className="absolute w-[310px] h-1 bg-zinc-700 bottom-0 left-[370px]"></div>
         </div>
       </div>
       <div className="h-[1150px] w-full relative overflow-hidden">
