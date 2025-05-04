@@ -23,7 +23,9 @@ export default function Features() {
       scrollTrigger: {
         trigger: overlayRef.current,
         start: "-20%",
+        end: '120%',
         scrub: true,
+        markers: true,
       }
     });
 
@@ -34,16 +36,16 @@ export default function Features() {
 
     tl.to(leafRef.current, {
       y: -350,
-      duration: 0.5
+      duration: 0.5,
     }, 'a');
 
     tl.to(empressRef.current, {
       y: -300,
-      duration: 0.5
+      duration: 0.5,
     }, 'a');
 
     tl.to(box1Ref.current, {
-      y: -300
+      y: -300,
     }, 'a');
 
     tl.to(box2Ref.current, {
@@ -51,7 +53,8 @@ export default function Features() {
     }, 'a');
 
     tl.to(box3Ref.current, {
-      y: -600
+      y: -600,
+      duration: 0.7,
     }, 'a');
 
     tl.to(box4Ref.current, {
@@ -85,7 +88,7 @@ export default function Features() {
           <h1 className="text-zinc-700 font-semibold text-center">Crafted<br /> in Small Batches</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Each scent is hand-poured in limited runs, ensuring exclusivity, quality, and attention to detail.</p>
         </div>
-        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[20%] -bottom-[40%] h-[20rem] rounded-xl z-30">
+        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[20%] -bottom-[34%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><ShieldCheck className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Pure, <br /> No Compromise</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Free from harmful additives. Only pure natural extracts and clean ingredients go into every bottle.</p>
@@ -95,9 +98,9 @@ export default function Features() {
           <h1 className="text-zinc-700 text-center font-semibold">Honest Luxury</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
-        <img ref={leafRef} className="absolute z-20 w-48 right-[22%] bottom-[40%]" src="/leaf.png" alt="leaf" />
-        <img ref={empressRef} className="absolute z-20 w-48 left-[25%] bottom-0" src="/empress.png" alt="empress" />
-        <img ref={imageRef} src="/man-spray-min.jpg" alt="Face" className="absolute man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
+        <img ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[40%]" src="/leaf.png" alt="leaf" />
+        <img ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] bottom-0" src="/empress.png" alt="empress" />
+        <img ref={imageRef} src="/man-spray-min.jpg" alt="Face" className="absolute select-none man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
         <div className="absolute inset-0 bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
           WebkitMaskImage: "radial-gradient(circle at center, transparent 40%, white 40.1%)",
