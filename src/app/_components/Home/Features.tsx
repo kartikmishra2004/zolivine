@@ -67,7 +67,7 @@ export default function Features() {
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: overlayRef.current,
-        start: '-15%',
+        start: '-20%',
       }
     });
 
@@ -136,9 +136,9 @@ export default function Features() {
           <h1 className="text-zinc-700 text-center font-semibold">Honest Luxury</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
-        <Image width={500} height={500} ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[40%]" src="/leaf.png" alt="leaf" />
-        <Image width={500} height={500} ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] bottom-0" src="/empress.png" alt="empress" />
-        <Image width={3000} height={3000} ref={imageRef} src="/man-spray-min.jpg" alt="Face" className="absolute select-none man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
+        <Image priority width={500} height={500} ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[40%]" src="/leaf.png" alt="leaf" />
+        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] bottom-0" src="/empress.png" alt="empress" />
+        <Image priority width={3000} height={3000} ref={imageRef} src="/man-spray-min.jpg" alt="Face" className="absolute select-none man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
         <div className="absolute inset-0 bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
           WebkitMaskImage: "radial-gradient(circle at center, transparent 40%, white 40.1%)",

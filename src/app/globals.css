@@ -67,3 +67,7 @@ body {
   color: var(--foreground);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
