@@ -119,12 +119,12 @@ export default function Hero() {
                     <h1 className="text-[5.5rem] text-zinc-50 font-semibold leading-20 flex flex-col items-center tracking-tighter">
                         <div className="overflow-hidden h-22 w-max">
                             <div ref={heroTitle1Ref} className="">
-                                <span className="font-editorialNew">True</span> to Essence,
+                                <span className="font-editorialNew tracking-tighter">True</span> to Essence,
                             </div>
                         </div>
                         <div className="overflow-hidden b h-22 w-max px-2">
                             <div ref={heroTitle2Ref} className="">
-                                kind to <span className="font-editorialNew">Nature</span>
+                                kind to <span className="font-editorialNew tracking-tighter">Nature</span>
                             </div>
                         </div>
                     </h1>
