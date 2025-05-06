@@ -70,25 +70,27 @@ export default function Explore() {
   ]
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: "-20%",
-      }
-    });
 
-    tl.from(heading1Ref.current, {
+    gsap.from(heading1Ref.current, {
       y: 60,
       duration: 0.9,
       ease: 'power4.out',
-    }, 'a');
+      scrollTrigger: {
+        trigger: screenRef.current,
+        start: '-20%',
+      }
+    });
 
-    tl.from(heading2Ref.current, {
+    gsap.from(heading2Ref.current, {
       y: 75,
       duration: 0.9,
       delay: 0.1,
       ease: 'power4.out',
-    }, 'a');
+      scrollTrigger: {
+        trigger: screenRef.current,
+        start: '-20%',
+      }
+    });
 
     gsap.from(heading3Ref.current, {
       y: 60,

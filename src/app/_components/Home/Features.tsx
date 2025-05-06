@@ -64,31 +64,36 @@ export default function Features() {
       y: -400,
     }, 'a');
 
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: overlayRef.current,
-        start: '-20%',
-      }
-    });
-
-    tl2.from(heading1Ref.current, {
+    gsap.from(heading1Ref.current, {
       y: 60,
       duration: 0.9,
       ease: 'power4.out',
-    }, 'x');
+      scrollTrigger: {
+        trigger: overlayRef.current,
+        start: '-24%',
+      }
+    });
 
-    tl2.from(heading2Ref.current, {
+    gsap.from(heading2Ref.current, {
       y: 60,
       duration: 0.9,
       delay: 0.1,
       ease: 'power4.out',
-    }, 'x');
+      scrollTrigger: {
+        trigger: overlayRef.current,
+        start: '-24%',
+      }
+    });
 
-    tl2.from(lineRef.current, {
+    gsap.from(lineRef.current, {
       width: 0,
       ease: 'power4.out',
-      delay: 0.6
-    }, 'x');
+      delay: 0.4,
+      scrollTrigger: {
+        trigger: overlayRef.current,
+        start: '-24%',
+      }
+    });
 
   });
 
