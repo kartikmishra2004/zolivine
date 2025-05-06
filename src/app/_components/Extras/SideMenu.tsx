@@ -31,7 +31,7 @@ export default function SideMenu({ setMenuOpen, menuOpen }: Props) {
         });
 
         gsap.to(leftArrow.current, {
-            x: 40,
+            x: 45,
             duration: 0.7,
             ease: 'power4.out',
             opacity: 1,

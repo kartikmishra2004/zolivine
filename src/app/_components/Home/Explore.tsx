@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,6 +26,7 @@ export default function Explore() {
   const rightArrow2 = useRef<SVGSVGElement | null>(null);
   const leftArrow2 = useRef<SVGSVGElement | null>(null);
   const image2Ref = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const pureBrilliance = [
     {
@@ -119,7 +120,7 @@ export default function Explore() {
       ease: 'power4.out',
       scrollTrigger: {
         trigger: screenRef.current,
-        start: '25%',
+        start: '35%',
       }
     });
 
@@ -130,8 +131,38 @@ export default function Explore() {
       ease: 'power4.out',
       scrollTrigger: {
         trigger: screenRef.current,
-        start: '25%',
+        start: '35%',
       }
+    });
+
+    gsap.utils.toArray<HTMLElement>(".product-card1").forEach((card) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '10%',
+        },
+        rotateZ: -10,
+        x: 60,
+        y: -30,
+        opacity: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    });
+
+    gsap.utils.toArray<HTMLElement>(".product-card2").forEach((card) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '50%',
+        },
+        rotateZ: 10,
+        x: -60,
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
     });
 
     const tl2 = gsap.timeline({
@@ -238,6 +269,12 @@ export default function Explore() {
     });
   }
 
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      container.scrollLeft = container.scrollWidth;
+    }
+  }, []);
 
   return (
     <section ref={screenRef} className="w-full h-max bg-zinc-50">
@@ -288,7 +325,7 @@ export default function Explore() {
           <div className="w-[50.1%] px-16 absolute right-0 bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide">
             <div className="flex-nowrap flex gap-4">
               {pureBrilliance.map((item, id) => (
-                <Link href={'/products'} key={id} className="bg-red-200 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={'/products'} key={id} className="product-card1 bg-red-200 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
                   <img className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
@@ -305,7 +342,7 @@ export default function Explore() {
             </div>
           </div>
           <div className="w-[50.1%] absolute right-0 bottom-0 h-[19%] px-16 pt-10">
-            <p className="text-md text-zinc-700 w-[300px] capitalize">Stay radiant and refreshed, effortlessly scented by nature.</p>
+            <p className="text-sm text-zinc-700 w-[300px]">STAY RADIANT AND REFRESHED, EFFORTLESSLY SCENTED BY NATURE.</p>
           </div>
         </div>
       </div>
@@ -339,10 +376,10 @@ export default function Explore() {
               </Link>
             </div>
           </div>
-          <div className="w-[50.1%] px-16 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide">
+          <div className="w-[50.1%] px-16 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide" ref={scrollContainerRef}>
             <div className="flex-nowrap flex gap-4">
               {gildedEssence.map((item, id) => (
-                <Link href={'/products'} key={id} className="bg-red-200 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={'/products'} key={id} className="bg-red-200 product-card2 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
                   <img className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
@@ -359,7 +396,7 @@ export default function Explore() {
             </div>
           </div>
           <div className="w-[50.1%] absolute left-0 bottom-0 h-[19%] px-16 pt-10">
-            <p className="text-md text-zinc-700 w-[300px] capitalize">Stay radiant and refreshed, effortlessly scented by nature.</p>
+            <p className="text-sm text-zinc-700 w-[300px]">GLOW IN GOLDEN GRACE, EFFORTLESSLY WRAPPED IN TIMELESS SCENT.</p>
           </div>
         </div>
       </div>
