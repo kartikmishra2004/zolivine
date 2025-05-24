@@ -33,19 +33,19 @@ export default function Explore() {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: 'https://images.prismic.io/truekind/ZurDj7VsGrYSvh0W_1.jpg?auto=format,compress'
+      image: '/1.png'
     },
     {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: 'https://images.prismic.io/truekind/ZurDj7VsGrYSvh0W_1.jpg?auto=format,compress'
+      image: '/2.png'
     },
     {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: 'https://images.prismic.io/truekind/ZurDj7VsGrYSvh0W_1.jpg?auto=format,compress'
+      image: '/3.png'
     },
   ]
 
@@ -54,19 +54,19 @@ export default function Explore() {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: 'https://images.prismic.io/truekind/ZurQjbVsGrYSvik0_1.jpg?auto=format,compress'
+      image: '/4.png'
     },
     {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: 'https://images.prismic.io/truekind/ZurQjbVsGrYSvik0_1.jpg?auto=format,compress'
+      image: '/5.png'
     },
     {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: 'https://images.prismic.io/truekind/ZurQjbVsGrYSvik0_1.jpg?auto=format,compress'
+      image: '/6.png'
     },
   ]
 
@@ -141,12 +141,11 @@ export default function Explore() {
           trigger: screenRef.current,
           start: '10%',
         },
-        rotateZ: -10,
+        rotateZ: -5,
         x: 60,
         y: -30,
         opacity: 0,
         duration: 1,
-        ease: 'power4.out',
       });
     });
 
@@ -156,12 +155,11 @@ export default function Explore() {
           trigger: screenRef.current,
           start: '50%',
         },
-        rotateZ: 10,
+        rotateZ: 5,
         x: -60,
         y: 30,
         opacity: 0,
         duration: 1,
-        ease: 'power4.out',
       });
     });
 
@@ -379,7 +377,7 @@ export default function Explore() {
           <div className="w-[50.1%] px-16 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide" ref={scrollContainerRef}>
             <div className="flex-nowrap flex gap-4">
               {gildedEssence.map((item, id) => (
-                <Link href={'/products'} key={id} className="bg-red-200 product-card2 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={'/products'} key={id} className="bg-[#d8cec4] product-card2 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
                   <img className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
