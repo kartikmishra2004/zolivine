@@ -128,7 +128,7 @@ export default function Features() {
         <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 left-[20%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Botanical Alchemy</h1>
-          <p className="text-xs tracking-wide text-zinc-700 text-center">Blended with rare botanicals and golden essences, our perfumes are rooted in nature's finest.</p>
+          <p className="text-xs tracking-wide text-zinc-700 text-center">Blended with rare botanicals and golden essences, our perfumes are rooted in nature&apos;s finest.</p>
         </div>
         <div ref={box2Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] left-[3%] bottom-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><FlaskConical className="text-zinc-700" strokeWidth={1.5} /></div>
