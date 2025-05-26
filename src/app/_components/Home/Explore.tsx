@@ -241,7 +241,7 @@ export default function Explore() {
             <div className="flex-nowrap flex gap-4">
               {pureBrilliance.map((item, id) => (
                 <Link href={'/products'} key={id} className="product-card1 bg-red-200 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
-                  <img className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product" />
+                  <Image height={416} width={304} alt='product-img' className="absolute select-none w-full h-full object-cover z-0" src={item.image} />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
                       <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.title}</div>
@@ -295,7 +295,7 @@ export default function Explore() {
             <div className="flex-nowrap flex gap-4">
               {gildedEssence.map((item, id) => (
                 <Link href={'/products'} key={id} className="bg-[#d8cec4] product-card2 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
-                  <img className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product" />
+                  <Image height={416} width={304} className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product-img" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
                       <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.title}</div>

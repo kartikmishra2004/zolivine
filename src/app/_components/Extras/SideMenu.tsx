@@ -1,4 +1,4 @@
-import { MoveRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import ArrowButton from "./ArrowButton";
