@@ -198,7 +198,7 @@ export default function Explore() {
 
   return (
     <section ref={screenRef} className="w-full h-max bg-zinc-50">
-      <div className="w-[90%] h-[1px] bg-zinc-300 mx-auto"></div>
+      <div className="w-[90%] h-[1px] bg-zinc-400/70 mx-auto"></div>
       <div className="w-full flex-col h-[330px] flex justify-center items-center relative">
         <div className="overflow-hidden">
           <h1 ref={heading1Ref} className="text-6xl tracking-wide font-semibold text-zinc-700">

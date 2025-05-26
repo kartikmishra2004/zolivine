@@ -156,7 +156,7 @@ export default function Preloader() {
                             <h1 className="text-9xl font-semibold italic text-zinc-50">9</h1>
                         </span>
                     </div>
-                    <div ref={spinnerRef} className="w-8 h-8 border-zinc-50 border-t animate-spin absolute bottom-40 rounded-full"></div>
+                    <div ref={spinnerRef} className="w-8 h-8 border-t-zinc-50 border-t border-r border-b border-l border-r-zinc-600 border-b-zinc-600 border-l-zinc-600 animate-spin absolute bottom-40 rounded-full"></div>
                     <span className="overflow-hidden">
                         <h1 ref={logo2Ref} className={`${lobster.className} translate-y-[100%] text-6xl text-zinc-50 px-0.5`}>vine</h1>
                     </span>
