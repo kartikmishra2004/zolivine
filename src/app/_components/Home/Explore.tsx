@@ -8,11 +8,14 @@ import Link from "next/link";
 import ArrowButton from "../Extras/ArrowButton";
 import { useGSAP } from "@gsap/react";
 import { EditorialNew } from "@/utils/fonts";
+import { useAnimation } from '@/app/_context/AnimationContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Explore() {
 
+  const animated = useAnimation((s) => s.hasAnimated('home-explore'));
+  const setAnimated = useAnimation((s) => s.setAnimated);
   const screenRef = useRef(null);
   const heading1Ref = useRef(null);
   const heading2Ref = useRef(null);
@@ -25,7 +28,6 @@ export default function Explore() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [arrow1Hovered, setArrow1Hovered] = useState(false);
   const [arrow2Hovered, setArrow2Hovered] = useState(false);
-  const hasAnimated = useRef(false);
 
   const pureBrilliance = [
     {
@@ -77,8 +79,9 @@ export default function Explore() {
   }, []);
 
   useGSAP(() => {
-    if (!hasAnimated.current) {
-      hasAnimated.current = true;
+
+    if (!animated) {
+
       gsap.from(heading1Ref.current, {
         y: 60,
         duration: 0.9,
@@ -169,27 +172,28 @@ export default function Explore() {
           y: 30,
           opacity: 0,
           duration: 1,
+          onComplete: () => setAnimated('home-explore', true)
         });
       });
-
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: screenRef.current,
-          start: '-20%',
-          scrub: true,
-        }
-      });
-
-      tl2.to(image1Ref.current, {
-        y: 450,
-        ease: 'none',
-      }, 'image');
-
-      tl2.to(image2Ref.current, {
-        y: 450,
-        ease: 'none',
-      }, 'image+=0.2');
     }
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: screenRef.current,
+        start: '-20%',
+        scrub: true,
+      }
+    });
+
+    tl2.to(image1Ref.current, {
+      y: 450,
+      ease: 'none',
+    }, 'image');
+
+    tl2.to(image2Ref.current, {
+      y: 450,
+      ease: 'none',
+    }, 'image+=0.2');
   });
 
   return (

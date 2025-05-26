@@ -6,11 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlaskConical, Leaf, Search, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { EditorialNew } from "@/utils/fonts";
+import { useAnimation } from '@/app/_context/AnimationContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Features() {
 
+  const animated = useAnimation((s) => s.hasAnimated('home-features'));
+  const setAnimated = useAnimation((s) => s.setAnimated);
   const overlayRef = useRef(null);
   const imageRef = useRef(null);
   const leafRef = useRef(null);
@@ -22,7 +25,6 @@ export default function Features() {
   const heading1Ref = useRef(null);
   const heading2Ref = useRef(null);
   const lineRef = useRef(null);
-  const hasAnimated = useRef(false);
 
   useGSAP(() => {
 
@@ -67,8 +69,8 @@ export default function Features() {
       y: -400,
     }, 'a');
 
-    if (!hasAnimated.current) {
-      hasAnimated.current = true;
+    if (!animated) {
+
       gsap.from(heading1Ref.current, {
         y: 60,
         duration: 0.9,
@@ -97,7 +99,8 @@ export default function Features() {
         scrollTrigger: {
           trigger: overlayRef.current,
           start: '-24%',
-        }
+        },
+        onComplete: () => setAnimated('home-features', true)
       });
     }
   });

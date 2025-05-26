@@ -7,10 +7,14 @@ import Link from "next/link";
 import { useLoading } from '@/app/_context/LoadingContext';
 import ArrowButton from "../Extras/ArrowButton";
 import { EditorialNew } from "@/utils/fonts";
+import { useAnimation } from '@/app/_context/AnimationContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+
+    const animated = useAnimation((s) => s.hasAnimated('home-hero'));
+    const setAnimated = useAnimation((s) => s.setAnimated);
     const { loading } = useLoading();
     const heroTitle1Ref = useRef<HTMLDivElement | null>(null);
     const heroTitle2Ref = useRef<HTMLDivElement | null>(null);
@@ -20,24 +24,10 @@ export default function Hero() {
     const ScreenRef = useRef<HTMLElement | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [arrowHovered, setArrowHovered] = useState<boolean>(false);
-    const hasAnimated = useRef(false);
 
     useGSAP(() => {
         if (!loading) {
-            if (!hasAnimated.current) {
-                hasAnimated.current = true;
-
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ScreenRef.current,
-                        start: "top 0%",
-                        scrub: true,
-                    }
-                });
-
-                tl.to(videoRef.current, {
-                    y: 350,
-                });
+            if (!animated) {
 
                 gsap.to(heroTitle1Ref.current, {
                     y: 0,
@@ -67,6 +57,7 @@ export default function Hero() {
                     delay: 0.3,
                     duration: 1.5,
                     ease: 'power4.out',
+                    onComplete: () => setAnimated('home-hero', true)
                 });
 
             } else {
@@ -76,6 +67,18 @@ export default function Hero() {
                 gsap.set(heroPara2Ref.current, { y: 0 });
                 gsap.set(buttonRef.current, { scale: 1 });
             }
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ScreenRef.current,
+                    start: "top 0%",
+                    scrub: true,
+                }
+            });
+
+            tl.to(videoRef.current, {
+                y: 350,
+            });
         }
     }, [loading]);
 
