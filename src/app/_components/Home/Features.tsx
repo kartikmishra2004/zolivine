@@ -21,8 +21,10 @@ export default function Features() {
   const heading1Ref = useRef(null);
   const heading2Ref = useRef(null);
   const lineRef = useRef(null);
+  const hasAnimated = useRef(false);
 
   useGSAP(() => {
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: overlayRef.current,
@@ -64,37 +66,39 @@ export default function Features() {
       y: -400,
     }, 'a');
 
-    gsap.from(heading1Ref.current, {
-      y: 60,
-      duration: 0.9,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: overlayRef.current,
-        start: '-24%',
-      }
-    });
+    if (!hasAnimated.current) {
+      hasAnimated.current = true;
+      gsap.from(heading1Ref.current, {
+        y: 60,
+        duration: 0.9,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: overlayRef.current,
+          start: '-24%',
+        }
+      });
 
-    gsap.from(heading2Ref.current, {
-      y: 60,
-      duration: 0.9,
-      delay: 0.1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: overlayRef.current,
-        start: '-24%',
-      }
-    });
+      gsap.from(heading2Ref.current, {
+        y: 60,
+        duration: 0.9,
+        delay: 0.1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: overlayRef.current,
+          start: '-24%',
+        }
+      });
 
-    gsap.from(lineRef.current, {
-      width: 0,
-      ease: 'power4.out',
-      delay: 0.4,
-      scrollTrigger: {
-        trigger: overlayRef.current,
-        start: '-24%',
-      }
-    });
-
+      gsap.from(lineRef.current, {
+        width: 0,
+        ease: 'power4.out',
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: overlayRef.current,
+          start: '-24%',
+        }
+      });
+    }
   });
 
   return (

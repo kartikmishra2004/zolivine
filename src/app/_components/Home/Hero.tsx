@@ -1,15 +1,16 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { MoveRight } from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { useLoading } from '@/app/_context/LoadingContext';
+import ArrowButton from "../Extras/ArrowButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-
+    const { loading } = useLoading();
     const heroTitle1Ref = useRef<HTMLDivElement | null>(null);
     const heroTitle2Ref = useRef<HTMLDivElement | null>(null);
     const heroPara1Ref = useRef<HTMLParagraphElement | null>(null);
@@ -17,97 +18,66 @@ export default function Hero() {
     const buttonRef = useRef<HTMLAnchorElement | null>(null);
     const ScreenRef = useRef<HTMLElement | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
-    const rightIconRef = useRef<HTMLSpanElement | null>(null);
-    const rightArrow = useRef<SVGSVGElement | null>(null);
-    const leftArrow = useRef<SVGSVGElement | null>(null);
+    const [arrowHovered, setArrowHovered] = useState<boolean>(false);
+    const hasAnimated = useRef(false);
 
     useGSAP(() => {
+        if (!loading) {
+            if (!hasAnimated.current) {
+                hasAnimated.current = true;
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ScreenRef.current,
-                start: "top 0%",
-                scrub: true,
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ScreenRef.current,
+                        start: "top 0%",
+                        scrub: true,
+                    }
+                });
+
+                tl.to(videoRef.current, {
+                    y: 350,
+                });
+
+                gsap.to(heroTitle1Ref.current, {
+                    y: 0,
+                    duration: 1,
+                });
+
+                gsap.to(heroTitle2Ref.current, {
+                    y: 0,
+                    duration: 0.9,
+                    delay: 0.2,
+                });
+
+                gsap.to(heroPara1Ref.current, {
+                    y: 0,
+                    duration: 0.9,
+                    delay: 0.2,
+                });
+
+                gsap.to(heroPara2Ref.current, {
+                    y: 0,
+                    duration: 0.9,
+                    delay: 0.2,
+                });
+
+                gsap.to(buttonRef.current, {
+                    scale: 1,
+                    delay: 0.3,
+                    duration: 1.5,
+                    ease: 'power4.out',
+                });
+
+            } else {
+                gsap.set(heroTitle1Ref.current, { y: 0 });
+                gsap.set(heroTitle2Ref.current, { y: 0 });
+                gsap.set(heroPara1Ref.current, { y: 0 });
+                gsap.set(heroPara2Ref.current, { y: 0 });
+                gsap.set(buttonRef.current, { scale: 1 });
             }
-        });
+        }
+    }, [loading]);
 
-        tl.to(videoRef.current, {
-            y: 350,
-        });
-
-        gsap.from(heroTitle1Ref.current, {
-            y: 100,
-            duration: 1,
-            delay: 5.6,
-        });
-
-        gsap.from(heroTitle2Ref.current, {
-            y: 100,
-            duration: 0.9,
-            delay: 5.8,
-        });
-
-        gsap.from(heroPara1Ref.current, {
-            y: 100,
-            duration: 0.9,
-            delay: 5.8,
-        });
-
-        gsap.from(heroPara2Ref.current, {
-            y: 100,
-            duration: 0.9,
-            delay: 5.8,
-        });
-
-        gsap.from(buttonRef.current, {
-            scale: 0,
-            delay: 5.9,
-            duration: 1.5,
-            ease: 'power4.out',
-        });
-    });
-
-    const handleButtonEnter = () => {
-        gsap.to(rightIconRef.current, {
-            scale: 1.09,
-            duration: 0.2,
-        });
-
-        gsap.to(rightArrow.current, {
-            x: 40,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 0,
-        });
-
-        gsap.to(leftArrow.current, {
-            x: 40,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 1,
-        });
-    }
-
-    const handleButtonLeave = () => {
-        gsap.to(rightIconRef.current, {
-            scale: 1,
-            duration: 0.2,
-        });
-
-        gsap.to(rightArrow.current, {
-            x: 0,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 1,
-        });
-
-        gsap.to(leftArrow.current, {
-            x: 0,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 0,
-        });
-    }
 
     return (
         <section ref={ScreenRef} className="relative overflow-hidden h-screen">
@@ -118,28 +88,28 @@ export default function Hero() {
                 <div className="flex justify-center items-center flex-col gap-3 mt-36">
                     <h1 className="text-[5.5rem] text-zinc-50 font-semibold leading-20 flex flex-col items-center tracking-tighter">
                         <div className="overflow-hidden h-22 w-max">
-                            <div ref={heroTitle1Ref} className="">
+                            <div ref={heroTitle1Ref} className="translate-y-24">
                                 <span className="font-editorialNew tracking-tighter">True</span> to Essence,
                             </div>
                         </div>
                         <div className="overflow-hidden b h-22 w-max px-2">
-                            <div ref={heroTitle2Ref} className="">
+                            <div ref={heroTitle2Ref} className="translate-y-24">
                                 kind to <span className="font-editorialNew tracking-tighter">Nature</span>
                             </div>
                         </div>
                     </h1>
                     <div className="">
                         <div className="overflow-hidden">
-                            <p ref={heroPara1Ref} className="text-zinc-50 text-xs font-thin w-[18rem] text-center tracking">Natural perfumes crafted with rare botanicals, golden </p>
+                            <p ref={heroPara1Ref} className="text-zinc-50 translate-y-24 text-xs font-thin w-[18rem] text-center tracking">Natural perfumes crafted with rare botanicals, golden </p>
                         </div>
                         <div className="overflow-hidden">
-                            <p ref={heroPara2Ref} className="text-zinc-50 text-xs font-thin w-[18rem] text-center tracking"> notes, and timeless, sustainable elegance.</p>
+                            <p ref={heroPara2Ref} className="text-zinc-50 translate-y-24 text-xs font-thin w-[18rem] text-center tracking"> notes, and timeless, sustainable elegance.</p>
                         </div>
                     </div>
                 </div>
-                <Link onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave} href={'/products'} ref={buttonRef} className="w-[47vw] h-[3.7rem] cursor-pointer rounded-4xl bg-zinc-50 relative flex justify-center items-center mb-10">
+                <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} href={'/products'} ref={buttonRef} className="w-[47vw] scale-0 h-[3.7rem] cursor-pointer rounded-4xl bg-zinc-50 relative flex justify-center items-center mb-10">
                     <h1 className="text-zinc-700 underline text-xs tracking-wider">EXPLORE ALL PRODUCTS</h1>
-                    <span ref={rightIconRef} className="w-12 h-12 overflow-hidden bg-zinc-700 rounded-full absolute right-2 flex justify-center items-center"><MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3.5" /><MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3.5 absolute" /></span>
+                    <ArrowButton hover={arrowHovered} />
                 </Link>
             </div>
         </section>

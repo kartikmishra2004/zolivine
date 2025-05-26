@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { CornerRightDown, MoveRight, ShoppingBag } from "lucide-react";
+import { CornerRightDown, ShoppingBag } from "lucide-react";
 import Link from "next/link";
+import ArrowButton from "../Extras/ArrowButton";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,14 +20,11 @@ export default function Explore() {
   const heading5Ref = useRef(null);
   const heading6Ref = useRef(null);
   const image1Ref = useRef(null);
-  const rightIconRef = useRef<HTMLSpanElement | null>(null);
-  const rightArrow = useRef<SVGSVGElement | null>(null);
-  const leftArrow = useRef<SVGSVGElement | null>(null);
-  const rightIconRef2 = useRef<HTMLSpanElement | null>(null);
-  const rightArrow2 = useRef<SVGSVGElement | null>(null);
-  const leftArrow2 = useRef<SVGSVGElement | null>(null);
   const image2Ref = useRef(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [arrow1Hovered, setArrow1Hovered] = useState(false);
+  const [arrow2Hovered, setArrow2Hovered] = useState(false);
+  const hasAnimated = useRef(false);
 
   const pureBrilliance = [
     {
@@ -70,209 +68,128 @@ export default function Explore() {
     },
   ]
 
-  useGSAP(() => {
-
-    gsap.from(heading1Ref.current, {
-      y: 60,
-      duration: 0.9,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '-20%',
-      }
-    });
-
-    gsap.from(heading2Ref.current, {
-      y: 75,
-      duration: 0.9,
-      delay: 0.1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '-20%',
-      }
-    });
-
-    gsap.from(heading3Ref.current, {
-      y: 60,
-      duration: 0.9,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '-5%',
-      }
-    });
-
-    gsap.from(heading4Ref.current, {
-      y: 60,
-      duration: 0.9,
-      delay: 0.1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '-5%',
-      }
-    });
-
-    gsap.from(heading5Ref.current, {
-      y: 60,
-      duration: 0.9,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '35%',
-      }
-    });
-
-    gsap.from(heading6Ref.current, {
-      y: 60,
-      duration: 0.9,
-      delay: 0.1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '35%',
-      }
-    });
-
-    gsap.utils.toArray<HTMLElement>(".product-card1").forEach((card) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: screenRef.current,
-          start: '10%',
-        },
-        rotateZ: -5,
-        x: 60,
-        y: -30,
-        opacity: 0,
-        duration: 1,
-      });
-    });
-
-    gsap.utils.toArray<HTMLElement>(".product-card2").forEach((card) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: screenRef.current,
-          start: '50%',
-        },
-        rotateZ: 5,
-        x: -60,
-        y: 30,
-        opacity: 0,
-        duration: 1,
-      });
-    });
-
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: screenRef.current,
-        start: '-20%',
-        scrub: true,
-      }
-    });
-
-    tl2.to(image1Ref.current, {
-      y: 450,
-      ease: 'none',
-    }, 'image');
-
-    tl2.to(image2Ref.current, {
-      y: 450,
-      ease: 'none',
-    }, 'image+=0.2');
-
-  });
-
-  const handleButtonEnter = () => {
-    gsap.to(rightIconRef.current, {
-      scale: 1.09,
-      duration: 0.2,
-    });
-
-    gsap.to(rightArrow.current, {
-      x: 40,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 0,
-    });
-
-    gsap.to(leftArrow.current, {
-      x: 40,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 1,
-    });
-  }
-
-  const handleButtonEnter2 = () => {
-    gsap.to(rightIconRef2.current, {
-      scale: 1.09,
-      duration: 0.2,
-    });
-
-    gsap.to(rightArrow2.current, {
-      x: 40,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 0,
-    });
-
-    gsap.to(leftArrow2.current, {
-      x: 40,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 1,
-    });
-  }
-
-  const handleButtonLeave = () => {
-    gsap.to(rightIconRef.current, {
-      scale: 1,
-      duration: 0.2,
-    });
-
-    gsap.to(rightArrow.current, {
-      x: 0,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 1,
-    });
-
-    gsap.to(leftArrow.current, {
-      x: 0,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 0,
-    });
-  }
-
-  const handleButtonLeave2 = () => {
-    gsap.to(rightIconRef2.current, {
-      scale: 1,
-      duration: 0.2,
-    });
-
-    gsap.to(rightArrow2.current, {
-      x: 0,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 1,
-    });
-
-    gsap.to(leftArrow2.current, {
-      x: 0,
-      duration: 0.7,
-      ease: 'power4.out',
-      opacity: 0,
-    });
-  }
-
   useEffect(() => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       container.scrollLeft = container.scrollWidth;
     }
   }, []);
+
+  useGSAP(() => {
+    if (!hasAnimated.current) {
+      hasAnimated.current = true;
+      gsap.from(heading1Ref.current, {
+        y: 60,
+        duration: 0.9,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '-20%',
+        }
+      });
+
+      gsap.from(heading2Ref.current, {
+        y: 75,
+        duration: 0.9,
+        delay: 0.1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '-20%',
+        }
+      });
+
+      gsap.from(heading3Ref.current, {
+        y: 60,
+        duration: 0.9,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '-5%',
+        }
+      });
+
+      gsap.from(heading4Ref.current, {
+        y: 60,
+        duration: 0.9,
+        delay: 0.1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '-5%',
+        }
+      });
+
+      gsap.from(heading5Ref.current, {
+        y: 60,
+        duration: 0.9,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '35%',
+        }
+      });
+
+      gsap.from(heading6Ref.current, {
+        y: 60,
+        duration: 0.9,
+        delay: 0.1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '35%',
+        }
+      });
+
+      gsap.utils.toArray<HTMLElement>(".product-card1").forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: screenRef.current,
+            start: '-5%',
+          },
+          rotateZ: -5,
+          delay: 0.2,
+          x: 60,
+          y: -30,
+          opacity: 0,
+          duration: 1,
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>(".product-card2").forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: screenRef.current,
+            start: '35%',
+          },
+          rotateZ: 5,
+          delay: 0.2,
+          x: -60,
+          y: 30,
+          opacity: 0,
+          duration: 1,
+        });
+      });
+
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: screenRef.current,
+          start: '-20%',
+          scrub: true,
+        }
+      });
+
+      tl2.to(image1Ref.current, {
+        y: 450,
+        ease: 'none',
+      }, 'image');
+
+      tl2.to(image2Ref.current, {
+        y: 450,
+        ease: 'none',
+      }, 'image+=0.2');
+    }
+  });
 
   return (
     <section ref={screenRef} className="w-full h-max bg-zinc-50">
@@ -314,9 +231,9 @@ export default function Explore() {
                 </h1>
               </div>
             </div>
-            <div className="">
-              <Link onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave} href={'/products'}>
-                <span ref={rightIconRef} className="w-12 h-12 overflow-hidden bg-zinc-700 rounded-full absolute right-16 bottom-16 flex justify-center items-center"><MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3.5" /><MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3.5 absolute" /></span>
+            <div className="relative">
+              <Link className="mr-16" onMouseEnter={() => setArrow1Hovered(true)} onMouseLeave={() => setArrow1Hovered(false)} href={'/products'}>
+                <ArrowButton hover={arrow1Hovered} />
               </Link>
             </div>
           </div>
@@ -368,9 +285,9 @@ export default function Explore() {
                 </h1>
               </div>
             </div>
-            <div className="">
-              <Link onMouseEnter={handleButtonEnter2} onMouseLeave={handleButtonLeave2} href={'/products'}>
-                <span ref={rightIconRef2} className="w-12 h-12 overflow-hidden bg-zinc-700 rounded-full absolute right-16 bottom-16 flex justify-center items-center"><MoveRight ref={rightArrow2} className="text-zinc-50 absolute w-3.5" /><MoveRight ref={leftArrow2} className="text-zinc-50 right-14 w-3.5 absolute" /></span>
+            <div className="relative">
+              <Link className="mr-16" onMouseEnter={() => setArrow2Hovered(true)} onMouseLeave={() => setArrow2Hovered(false)} href={'/products'}>
+                <ArrowButton hover={arrow2Hovered} />
               </Link>
             </div>
           </div>

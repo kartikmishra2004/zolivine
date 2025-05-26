@@ -1,11 +1,11 @@
 "use client"
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { useLoading } from '@/app/_context/LoadingContext';
 
 export default function Preloader() {
-
-    const [loading, setLoading] = useState(true);
+    const { loading } = useLoading();
     const leftBgRef = useRef(null);
     const rightBgRef = useRef(null);
     const lineRef = useRef(null);
@@ -14,19 +14,6 @@ export default function Preloader() {
     const leftCounterRef = useRef(null);
     const rightCounterRef = useRef(null);
     const spinnerRef = useRef(null);
-
-    useEffect(() => {
-
-        if (loading) {
-            document.body.style.position = "fixed";
-        }
-
-        setTimeout(() => {
-            setLoading(false);
-            document.body.style.position = "static";
-        }, 5600);
-
-    }, [loading]);
 
     useGSAP(() => {
         const tl = gsap.timeline();
@@ -145,35 +132,40 @@ export default function Preloader() {
         }, 'x');
     });
 
-    return (
-        <>
-            <section ref={leftBgRef} className="fixed top-0 left-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"> </section>
-            <div className={`w-full h-screen ${loading ? "flex" : "hidden"} justify-center items-center fixed z-[9999]`}>
-                <span className="overflow-hidden">
-                    <h1 ref={logo1Ref} className="font-playball -translate-y-[100%] text-6xl text-zinc-50 px-0.5">Zoli</h1>
-                </span>
-                <div className="flex absolute top-[40%] h-[8rem] overflow-hidden">
-                    <span ref={leftCounterRef} className="">
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">0</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">2</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">6</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">9</h1>
+    if (loading) {
+        return (
+            <>
+                <section ref={leftBgRef} className="fixed top-0 left-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"> </section>
+                <div className={`w-full h-screen flex justify-center items-center fixed z-[9999]`}>
+                    <span className="overflow-hidden">
+                        <h1 ref={logo1Ref} className="font-playball -translate-y-[100%] text-6xl text-zinc-50 px-0.5">Zoli</h1>
                     </span>
-                    <span ref={rightCounterRef} className="">
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">0</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">5</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">7</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">8</h1>
-                        <h1 className="text-9xl font-semibold italic text-zinc-50">9</h1>
+                    <div className="flex absolute top-[40%] h-[8rem] overflow-hidden">
+                        <span ref={leftCounterRef} className="">
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">0</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">2</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">6</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">9</h1>
+                        </span>
+                        <span ref={rightCounterRef} className="">
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">0</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">5</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">7</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">8</h1>
+                            <h1 className="text-9xl font-semibold italic text-zinc-50">9</h1>
+                        </span>
+                    </div>
+                    <div ref={spinnerRef} className="w-8 h-8 border-zinc-50 border-t animate-spin absolute bottom-40 rounded-full"></div>
+                    <span className="overflow-hidden">
+                        <h1 ref={logo2Ref} className="font-playball translate-y-[100%] text-6xl text-zinc-50">vine</h1>
                     </span>
                 </div>
-                <div ref={spinnerRef} className="w-8 h-8 border-zinc-50 border-t animate-spin absolute bottom-40 rounded-full"></div>
-                <span className="overflow-hidden">
-                    <h1 ref={logo2Ref} className="font-playball translate-y-[100%] text-6xl text-zinc-50">vine</h1>
-                </span>
-            </div>
-            <span ref={lineRef} className="h-screen w-[1px] bg-zinc-400 z-[9999] top-[-100%] fixed left-1/2"></span>
-            <section ref={rightBgRef} className="fixed top-0 right-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"></section>
-        </>
-    )
+                <span ref={lineRef} className="h-screen w-[1px] bg-zinc-400 z-[9999] top-[-100%] fixed left-1/2"></span>
+                <section ref={rightBgRef} className="fixed top-0 right-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"></section>
+            </>
+        )
+    } else {
+        return null;
+    }
+
 }

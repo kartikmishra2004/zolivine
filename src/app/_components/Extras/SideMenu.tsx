@@ -1,8 +1,7 @@
 import { MoveRight, X } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { useRef, useState } from "react";
+import ArrowButton from "./ArrowButton";
 
 type Props = {
     setMenuOpen: (params: boolean) => void;
@@ -13,52 +12,7 @@ export default function SideMenu({ setMenuOpen, menuOpen }: Props) {
 
     const products = [];
     const buttonRef = useRef<HTMLAnchorElement | null>(null);
-    const rightIconRef = useRef<HTMLSpanElement | null>(null);
-    const rightArrow = useRef<SVGSVGElement | null>(null);
-    const leftArrow = useRef<SVGSVGElement | null>(null);
-
-    const handleButtonEnter = () => {
-        gsap.to(rightIconRef.current, {
-            scale: 1.09,
-            duration: 0.2,
-        });
-
-        gsap.to(rightArrow.current, {
-            x: 40,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 0,
-        });
-
-        gsap.to(leftArrow.current, {
-            x: 45,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 1,
-        });
-    }
-
-    const handleButtonLeave = () => {
-        gsap.to(rightIconRef.current, {
-            scale: 1,
-            duration: 0.2,
-        });
-
-        gsap.to(rightArrow.current, {
-            x: 0,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 1,
-        });
-
-        gsap.to(leftArrow.current, {
-            x: 0,
-            duration: 0.7,
-            ease: 'power4.out',
-            opacity: 0,
-        });
-    }
-
+    const [arrowHovered, setArrowHovered] = useState(false)
     return (
         <>
             <section onClick={() => setMenuOpen(false)} className={`w-full h-screen bg-black/40 z-[9999] ${menuOpen ? "fixed" : "hidden"} transition-all duration-700 ease-in-out ${menuOpen ? "opacity-100" : "opacity-0"}`}></section>
@@ -73,9 +27,9 @@ export default function SideMenu({ setMenuOpen, menuOpen }: Props) {
                         <h1 className="text-center font-editorialNew text-[3.5rem] text-zinc-700 leading-20 tracking-tighter">empty</h1>
                     </div>
                     <div className="w-full flex justify-center">
-                        <Link ref={buttonRef} onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave} href={'/products'} className="w-[60%] h-[3rem] cursor-pointer rounded-4xl border border-[#c4c4c4] relative flex justify-center items-center">
+                        <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} ref={buttonRef} href={'/products'} className="w-[60%] h-[3rem] cursor-pointer rounded-4xl border border-[#c4c4c4] relative flex justify-center items-center">
                             <h1 className="text-zinc-700 underline text-xs tracking-wider">BROWSE PRODUCTS</h1>
-                            <span ref={rightIconRef} className="w-9 h-9 overflow-hidden bg-zinc-700 rounded-full absolute right-2 flex justify-center items-center"><MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3.5" /><MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3.5 absolute" /></span>
+                            <ArrowButton hover={arrowHovered} varient="sm" />
                         </Link>
                     </div>
                 </div>
