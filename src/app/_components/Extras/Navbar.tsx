@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import SideMenu from "./SideMenu";
+import { lobster } from "@/utils/fonts";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState<boolean>(false);
@@ -88,7 +89,7 @@ export default function Navbar() {
             <SideMenu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
             <nav ref={navRef} className={`fixed z-40 px-20 flex justify-between items-center w-full h-[4.5rem] transition-colors duration-300 ${scrolled ? "bg-zinc-50 text-zinc-700 shadow" : "text-zinc-50"}`}>
                 <Link href="/" className="w-32">
-                    <h1 className="font-playball text-[1.7rem]">Zolivine</h1>
+                    <h1 className={`${lobster.className} text-[1.7rem]`}>Zolivine</h1>
                 </Link>
                 <ul className="flex text-[10px] font-semibold gap-12 tracking-wider">
                     {navItems.map((item, id) => (

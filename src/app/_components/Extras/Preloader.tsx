@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { useLoading } from '@/app/_context/LoadingContext';
+import { lobster } from "@/utils/fonts";
 
 export default function Preloader() {
     const { loading } = useLoading();
@@ -138,7 +139,7 @@ export default function Preloader() {
                 <section ref={leftBgRef} className="fixed top-0 left-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"> </section>
                 <div className={`w-full h-screen flex justify-center items-center fixed z-[9999]`}>
                     <span className="overflow-hidden">
-                        <h1 ref={logo1Ref} className="font-playball -translate-y-[100%] text-6xl text-zinc-50 px-0.5">Zoli</h1>
+                        <h1 ref={logo1Ref} className={`${lobster.className} -translate-y-[100%] text-6xl text-zinc-50 px-0.5`}>Zoli</h1>
                     </span>
                     <div className="flex absolute top-[40%] h-[8rem] overflow-hidden">
                         <span ref={leftCounterRef} className="">
@@ -157,7 +158,7 @@ export default function Preloader() {
                     </div>
                     <div ref={spinnerRef} className="w-8 h-8 border-zinc-50 border-t animate-spin absolute bottom-40 rounded-full"></div>
                     <span className="overflow-hidden">
-                        <h1 ref={logo2Ref} className="font-playball translate-y-[100%] text-6xl text-zinc-50">vine</h1>
+                        <h1 ref={logo2Ref} className={`${lobster.className} translate-y-[100%] text-6xl text-zinc-50 px-0.5`}>vine</h1>
                     </span>
                 </div>
                 <span ref={lineRef} className="h-screen w-[1px] bg-zinc-400 z-[9999] top-[-100%] fixed left-1/2"></span>

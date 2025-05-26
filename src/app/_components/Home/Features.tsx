@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlaskConical, Leaf, Search, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import { EditorialNew } from "@/utils/fonts";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,7 +121,7 @@ export default function Features() {
           <p className="text-xs tracking-wide text-zinc-700 w-[40%]">
             Small-batch perfumes with golden notes and pure botanicals — no compromises.
           </p>
-          <h1 className="absolute font-semibold bottom-[15px] right-0 text-7xl font-editorialNew text-zinc-700 tracking-tighter">fragrance.</h1>
+          <h1 className={`absolute font-semibold bottom-[15px] right-0 text-7xl ${EditorialNew.className} text-zinc-700`}>fragrance.</h1>
           <div ref={lineRef} className="absolute w-[310px] h-1 bg-zinc-700 bottom-0 left-[370px]"></div>
         </div>
       </div>

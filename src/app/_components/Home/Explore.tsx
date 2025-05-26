@@ -7,6 +7,7 @@ import { CornerRightDown, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import ArrowButton from "../Extras/ArrowButton";
 import { useGSAP } from "@gsap/react";
+import { EditorialNew } from "@/utils/fonts";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,7 +90,7 @@ export default function Explore() {
       });
 
       gsap.from(heading2Ref.current, {
-        y: 75,
+        y: 90,
         duration: 0.9,
         delay: 0.1,
         ease: 'power4.out',
@@ -201,7 +202,7 @@ export default function Explore() {
           </h1>
         </div>
         <div className="overflow-hidden">
-          <h1 ref={heading2Ref} className="text-[5rem] leading-16 h-[80px] flex items-start text-zinc-700 font-semibold font-editorialNew tracking-tighter">
+          <h1 ref={heading2Ref} className={`text-[5rem] leading-24 h-[90px] flex items-start text-zinc-700 font-normal ${EditorialNew.className} pr-1 tracking-tighter`}>
             raw luxury
           </h1>
         </div>
@@ -226,7 +227,7 @@ export default function Explore() {
                 </h1>
               </div>
               <div className="overflow-hidden">
-                <h1 ref={heading4Ref} className="text-5xl leading-12 h-[45px] flex items-start text-zinc-700 font- font-editorialNew tracking-tighter">
+                <h1 ref={heading4Ref} className={`text-5xl leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
                   Brilliance
                 </h1>
               </div>
@@ -280,7 +281,7 @@ export default function Explore() {
                 </h1>
               </div>
               <div className="overflow-hidden">
-                <h1 ref={heading6Ref} className="text-5xl leading-12 h-[45px] flex items-start text-zinc-700 font- font-editorialNew tracking-tighter">
+                <h1 ref={heading6Ref} className={`text-5xl leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
                   Essence
                 </h1>
               </div>

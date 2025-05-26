@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import ArrowButton from "./ArrowButton";
+import { EditorialNew } from "@/utils/fonts";
 
 type Props = {
     setMenuOpen: (params: boolean) => void;
@@ -24,7 +25,7 @@ export default function SideMenu({ setMenuOpen, menuOpen }: Props) {
                 <div className="h-[90%] w-full flex flex-col justify-center items-center gap-4">
                     <div className="text-3xl">
                         <h1 className="text-center text-[3.5rem] text-zinc-700 leading-7">Your cart is</h1>
-                        <h1 className="text-center font-editorialNew text-[3.5rem] text-zinc-700 leading-20 tracking-tighter">empty</h1>
+                        <h1 className={`text-center ${EditorialNew.className} text-[3.5rem] text-zinc-700 leading-20 tracking-tighter`}>empty</h1>
                     </div>
                     <div className="w-full flex justify-center">
                         <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} ref={buttonRef} href={'/products'} className="w-[60%] h-[3rem] cursor-pointer rounded-4xl border border-[#c4c4c4] relative flex justify-center items-center">
