@@ -19,6 +19,9 @@ export default function ArrowButton({ hover = false, varient = 'lg' }: ArrowButt
         gsap.to(rightArrow.current, { x: 40, duration: 0.7, ease: "power4.out", opacity: 0 });
         gsap.to(leftArrow.current, { x: varient === 'lg' ? 39 : 45, duration: 0.7, ease: "power4.out", opacity: 1 });
     } else {
+        gsap.config({
+            nullTargetWarn: false,
+        });
         gsap.to(IconRef.current, { scale: 1, duration: 0.2 });
         gsap.to(rightArrow.current, { x: 0, duration: 0.7, ease: "power4.out", opacity: 1 });
         gsap.to(leftArrow.current, { x: 0, duration: 0.7, ease: "power4.out", opacity: 0 });
