@@ -101,7 +101,7 @@ export default function Navbar() {
                         <ShoppingCart strokeWidth={1} className={`w-5 ${scrolled ? "text-zinc-50" : "text-zinc-700"} transition-colors duration-300`} />
                     </button>
                     <div className="h-5 border-l border-zinc-400"></div>
-                    <Link href="/login">
+                    <Link href="/auth/login">
                         <User strokeWidth={1} className={`w-5 ${scrolled ? "text-zinc-50" : "text-zinc-700"} transition-colors duration-300`} />
                     </Link>
                 </div>
