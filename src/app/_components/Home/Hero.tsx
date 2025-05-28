@@ -85,9 +85,11 @@ export default function Hero() {
 
     return (
         <section ref={ScreenRef} className="relative overflow-hidden h-screen">
-            <video ref={videoRef} className="w-full absolute h-screen object-cover z-0" autoPlay loop muted playsInline preload="metadata">
+            <video ref={videoRef} className="w-full absolute h-screen object-cover z-0" autoPlay loop muted playsInline preload="auto" poster="/hero-poster.png">
                 <source src="/hero-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
             </video>
+
             <div className="w-full relative h-screen flex justify-between flex-col items-center z-10">
                 <div className="flex justify-center items-center flex-col gap-3 mt-36">
                     <h1 className="text-[5.5rem] text-zinc-50 font-semibold leading-20 flex flex-col items-center tracking-tighter">

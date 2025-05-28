@@ -6,12 +6,15 @@ import { useRef, useState } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useAnimation } from '@/app/_context/AnimationContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Information() {
 
+    const animated = useAnimation((s) => s.hasAnimated('home-information'));
+    const setAnimated = useAnimation((s) => s.setAnimated);
     const [arrowHovered, setArrowHovered] = useState(false);
     const sectionRef = useRef(null);
     const title1 = useRef(null);
@@ -21,45 +24,49 @@ export default function Information() {
 
     useGSAP(() => {
 
-        gsap.from(title1.current, {
-            y: 130,
-            duration: 1.2,
-            ease: 'power4.out',
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: '-20%',
-            }
-        });
-        gsap.from(title2.current, {
-            y: 140,
-            duration: 1.2,
-            delay: 0.2,
-            ease: 'power4.out',
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: '-20%',
-            }
-        });
-        gsap.from(title3.current, {
-            y: 140,
-            duration: 1.2,
-            ease: 'power4.out',
-            delay: 0.4,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: '-20%',
-            }
-        });
-        gsap.from(title4.current, {
-            y: 130,
-            duration: 1.2,
-            ease: 'power4.out',
-            delay: 0.6,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: '-20%',
-            }
-        });
+        if (!animated) {
+
+            gsap.from(title1.current, {
+                y: 130,
+                duration: 1.2,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: '-20%',
+                }
+            });
+            gsap.from(title2.current, {
+                y: 140,
+                duration: 1.2,
+                delay: 0.2,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: '-20%',
+                }
+            });
+            gsap.from(title3.current, {
+                y: 140,
+                duration: 1.2,
+                ease: 'power4.out',
+                delay: 0.4,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: '-20%',
+                }
+            });
+            gsap.from(title4.current, {
+                y: 130,
+                duration: 1.2,
+                ease: 'power4.out',
+                delay: 0.6,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: '-20%',
+                },
+                onComplete: () => setAnimated('home-information', true),
+            });
+        };
 
     });
 
