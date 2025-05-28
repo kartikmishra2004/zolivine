@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useAnimation } from '@/app/_context/AnimationContext';
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,8 +22,18 @@ export default function Information() {
     const title2 = useRef(null);
     const title3 = useRef(null);
     const title4 = useRef(null);
+    const flowerRef = useRef(null);
 
     useGSAP(() => {
+
+        gsap.to(flowerRef.current, {
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                scrub: true,
+                start: '-5%',
+            },
+            y: -300,
+        })
 
         if (!animated) {
 
@@ -71,7 +82,7 @@ export default function Information() {
     });
 
     return (
-        <section ref={sectionRef} className="w-full h-[175vh] bg-[#eeeeee]">
+        <section ref={sectionRef} className="w-full h-[160vh] pt-32 bg-[#eeeeee]">
             <div className="w-full flex flex-col justify-center items-center h-3/5">
                 <div className="flex overflow-hidden relative justify-center items-center w-full">
                     <h1 ref={title1} className="text-[10rem] leading-none text-zinc-700 font-semibold flex flex-col items-center tracking-tight">RADICAL</h1>
@@ -101,7 +112,8 @@ export default function Information() {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex justify-end h-2/5">
+            <div className="w-full flex justify-end h-2/5 relative">
+                <Image ref={flowerRef} className="absolute left-1/6 -top-20" src={'/pink-flower.png'} alt="flower" height={500} width={500} />
                 <div className="w-[45%] space-y-5 h-ful">
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">
