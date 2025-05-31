@@ -43,13 +43,11 @@ export default function Features() {
     }, 'a');
 
     tl.to(leafRef.current, {
-      y: -350,
-      duration: 0.5,
+      y: -550,
     }, 'a');
 
     tl.to(empressRef.current, {
-      y: -300,
-      duration: 0.5,
+      y: -500,
     }, 'a');
 
     tl.to(box1Ref.current, {
@@ -149,8 +147,8 @@ export default function Features() {
           <h1 className="text-zinc-700 text-center font-semibold">Honest Luxury</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
-        <Image priority width={500} height={500} ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[40%]" src="/images/leaf.png" alt="leaf" />
-        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] bottom-0" src="/images/empress.png" alt="empress" />
+        <Image priority width={500} height={500} ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[30%]" src="/images/leaf.png" alt="leaf" />
+        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
         <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
         <div className="absolute inset-0 bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
