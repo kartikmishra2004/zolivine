@@ -86,7 +86,7 @@ export default function Information() {
             <div className="w-full flex flex-col justify-center items-center h-3/5">
                 <div className="flex overflow-hidden relative justify-center items-center w-full">
                     <h1 ref={title1} className="text-[10rem] leading-none text-zinc-700 font-semibold flex flex-col items-center tracking-tight">RADICAL</h1>
-                    <span className="absolute left-56 bottom-6 text-zinc-400 text-xs font-semibold text-center tracking-wide py-0.5 px-12 rounded-full border">ETHOS</span>
+                    <span className="absolute left-56 bottom-6 select-none text-zinc-400 text-xs font-semibold text-center tracking-wide py-0.5 px-12 rounded-full border">ETHOS</span>
                 </div>
                 <div className="flex overflow-hidden justify-center items-center">
                     <h1 ref={title2} className="text-[10rem] leading-28 pb-8 text-zinc-700 font-semibold flex flex-col items-center tracking-tight">TRANSPARENCY.</h1>
@@ -112,12 +112,12 @@ export default function Information() {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex justify-end h-2/5 relative">
-                <Image ref={flowerRef} className="absolute left-1/6 -top-20" src={'/pink-flower.png'} alt="flower" height={500} width={500} />
-                <div className="w-[45%] space-y-5 h-ful">
+            <div className="w-full pt-20 flex justify-end h-2/5 relative">
+                <Image ref={flowerRef} className="absolute select-none left-1/6 -top-20" src={'/pink-flower.png'} alt="flower" height={500} width={500} />
+                <div className="w-[45%] space-y-5 h-full">
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">
-                            <img className="w-10 h-10" src="/icon-highest-standards.svg" alt="icons" />
+                            <img className="w-10 select-none h-10" src="/images/icon-highest-standards.svg" alt="icons" />
                             <h4 className={`text-zinc-600 ${EditorialNew.className} text-sm`}>
                                 100% Transparent <br />
                                 Formulas
@@ -130,7 +130,7 @@ export default function Information() {
                     </div>
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">
-                            <img className="w-10 h-10" src="/icon-real-results.svg" alt="icons" />
+                            <img className="w-10 select-none h-10" src="/images/icon-real-results.svg" alt="icons" />
                             <h4 className={`text-zinc-600 ${EditorialNew.className} text-sm`}>
                                 Only Verified <br />
                                 Ingredients

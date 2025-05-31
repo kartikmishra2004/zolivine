@@ -85,8 +85,8 @@ export default function Hero() {
 
     return (
         <section ref={ScreenRef} className="relative overflow-hidden h-screen">
-            <video ref={videoRef} className="w-full absolute h-screen object-cover z-0" autoPlay loop muted playsInline preload="auto" poster="/hero-poster.png">
-                <source src="/hero-video.mp4" type="video/mp4" />
+            <video ref={videoRef} className="w-full absolute h-screen object-cover z-0" autoPlay loop muted playsInline preload="auto" poster="/images/hero-poster.png">
+                <source src="/videos/hero-video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
