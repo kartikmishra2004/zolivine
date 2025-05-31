@@ -113,7 +113,7 @@ export default function Information() {
                 </div>
             </div>
             <div className="w-full pt-20 flex justify-end h-2/5 relative">
-                <Image ref={flowerRef} className="absolute select-none left-1/6 -top-20" src={'/pink-flower.png'} alt="flower" height={500} width={500} />
+                <Image ref={flowerRef} className="absolute select-none left-1/6 -top-20" src={'/images/pink-flower.png'} alt="flower" height={500} width={500} />
                 <div className="w-[45%] space-y-5 h-full">
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">

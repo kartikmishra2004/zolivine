@@ -34,19 +34,19 @@ export default function Explore() {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: '/1.png'
+      image: '/images/1.png'
     },
     {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: '/2.png'
+      image: '/images/2.png'
     },
     {
       title: 'PURE BRILLIANCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹899',
-      image: '/3.png'
+      image: '/images/3.png'
     },
   ]
 
@@ -55,19 +55,19 @@ export default function Explore() {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: '/4.png'
+      image: '/images/4.png'
     },
     {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: '/5.png'
+      image: '/images/5.png'
     },
     {
       title: 'GILDED ESSENCE',
       description: 'Aha brightning exfoliant cleanser/face wash',
       price: '₹1299',
-      image: '/6.png'
+      image: '/images/6.png'
     },
   ]
 
@@ -215,7 +215,7 @@ export default function Explore() {
 
       {/* Product section #1 */}
       <div className="relative h-[120vh] w-full overflow-hidden">
-        <Image priority height={2000} width={2000} ref={image1Ref} src="/women-spray.jpg" alt="women" className="absolute select-none inset-0 w-full scale-200 -top-[7%] h-full object-contain z-0" />
+        <Image priority height={2000} width={2000} ref={image1Ref} src="/images/women-spray.jpg" alt="women" className="absolute select-none inset-0 w-full scale-200 -top-[7%] h-full object-contain z-0" />
         <div className="absolute inset-0 bg-zinc-50 z-10"
           style={{
             maskImage: "linear-gradient(to right, transparent 50%, white 50%)",
@@ -269,7 +269,7 @@ export default function Explore() {
 
       {/* Product section #2 */}
       <div className="relative h-[120vh] w-full overflow-hidden">
-        <Image priority height={2000} width={2000} ref={image2Ref} src="/man-flower.jpg" alt="women" className="absolute select-none inset-0 w-full scale-150 -top-[7%] h-full object-contain z-0" />
+        <Image priority height={2000} width={2000} ref={image2Ref} src="/images/man-flower.jpg" alt="women" className="absolute select-none inset-0 w-full scale-150 -top-[7%] h-full object-contain z-0" />
         <div className="absolute inset-0 bg-zinc-50 z-10"
           style={{
             maskImage: "linear-gradient(to left, transparent 50%, white 50%)",
