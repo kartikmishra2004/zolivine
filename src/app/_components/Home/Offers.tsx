@@ -64,7 +64,7 @@ export default function Offers() {
                 <div className="h-1/2 w-full p-20">
                     <span className="select-none text-zinc-400 text-xs font-semibold text-center tracking-wide py-0.5 px-8 rounded-full border">QUALITY</span>
                     <h1 className="text-4xl text-zinc-700 mt-4 tracking-tight w-2/3">Only proven Ingredients, quality over quantity always!</h1>
-                    <p className="mt-4 text-sm text-zinc-400 leading-4 w-2/3">Its about what we don't put in. Squeaky clean formulas with over 1500 Negative Ingredients.</p>
+                    <p className="mt-4 text-sm text-zinc-400 leading-4 w-2/3">Its about what we don&apos;t put in. Squeaky clean formulas with over 1500 Negative Ingredients.</p>
                 </div>
             </div>
             <div className="w-[49.9%] h-full bg-transparent">

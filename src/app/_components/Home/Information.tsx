@@ -117,7 +117,7 @@ export default function Information() {
                 <div className="w-[45%] space-y-5 h-full">
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">
-                            <img className="w-10 select-none h-10" src="/images/icon-highest-standards.svg" alt="icons" />
+                            <Image width={40} height={40} className="w-10 select-none h-10" src="/images/icon-highest-standards.svg" alt="icons" />
                             <h4 className={`text-zinc-600 ${EditorialNew.className} text-sm`}>
                                 100% Transparent <br />
                                 Formulas
@@ -130,7 +130,7 @@ export default function Information() {
                     </div>
                     <div className="flex w-full justify-between">
                         <div className="flex gap-3 w-1/2">
-                            <img className="w-10 select-none h-10" src="/images/icon-real-results.svg" alt="icons" />
+                            <Image width={40} height={40} className="w-10 select-none h-10" src="/images/icon-real-results.svg" alt="icons" />
                             <h4 className={`text-zinc-600 ${EditorialNew.className} text-sm`}>
                                 Only Verified <br />
                                 Ingredients
