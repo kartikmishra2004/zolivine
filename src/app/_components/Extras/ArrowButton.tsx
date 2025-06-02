@@ -6,9 +6,10 @@ export interface ArrowButtonProps {
     hover?: boolean;
     height?: number;
     varient?: 'sm' | 'lg';
+    color?: string;
 }
 
-export default function ArrowButton({ hover = false, varient = 'lg' }: ArrowButtonProps) {
+export default function ArrowButton({ hover = false, varient = 'lg', color = 'bg-zinc-700' }: ArrowButtonProps) {
 
     const IconRef = useRef<HTMLSpanElement | null>(null);
     const rightArrow = useRef<SVGSVGElement | null>(null);
@@ -29,16 +30,16 @@ export default function ArrowButton({ hover = false, varient = 'lg' }: ArrowButt
 
     if (varient === 'lg') {
         return (
-            <span ref={IconRef} className="w-12 h-12 overflow-hidden bg-zinc-700 rounded-full absolute right-2 flex justify-center items-center">
-                <MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3.5" />
-                <MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3.5 absolute" />
+            <span ref={IconRef} className={`w-12 h-12 overflow-hidden ${color} rounded-full absolute right-2 flex justify-center items-center`}>
+                <MoveRight ref={rightArrow} className={`${color === 'bg-zinc-50' ? 'text-zinc-700' : 'text-zinc-50'} absolute w-3.5`} />
+                <MoveRight ref={leftArrow} className={`${color === 'bg-zinc-50' ? 'text-zinc-700' : 'text-zinc-50'} right-14 w-3.5 absolute`} />
             </span>
         )
     } else if (varient === 'sm') {
         return (
-            <span ref={IconRef} className="w-9 h-9 overflow-hidden bg-zinc-700 rounded-full absolute right-2 flex justify-center items-center">
-                <MoveRight ref={rightArrow} className="text-zinc-50 absolute w-3" />
-                <MoveRight ref={leftArrow} className="text-zinc-50 right-14 w-3 absolute" />
+            <span ref={IconRef} className={`w-9 h-9 overflow-hidden ${color} rounded-full absolute right-2 flex justify-center items-center`}>
+                <MoveRight ref={rightArrow} className={`${color === 'bg-zinc-50' ? 'text-zinc-700' : 'text-zinc-50'} absolute w-3`} />
+                <MoveRight ref={leftArrow} className={`${color === 'bg-zinc-50' ? 'text-zinc-700' : 'text-zinc-50'} right-14 w-3 absolute`} />
             </span>
         )
     }

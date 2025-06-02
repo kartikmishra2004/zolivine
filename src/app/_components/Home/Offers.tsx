@@ -82,7 +82,7 @@ export default function Offers() {
                             </div>
                         </div>
                         <div className="pr-10">
-                            <Link href='/philosophy'>
+                            <Link href='/products'>
                                 <div onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} className="relative cursor-pointer -rotate-45">
                                     <ArrowButton hover={arrowHovered} varient="lg" />
                                 </div>
