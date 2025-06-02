@@ -78,7 +78,7 @@ export default function Journal() {
                             <div className="w-1/2 h-[300px] overflow-hidden">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <Link href={'/journal'}>
-                                        <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/blowup.jpg'} alt="image" height={442} width={680} />
+                                        <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/man.jpg'} alt="image" height={442} width={680} />
                                     </Link>
                                 </div>
                                 <div className="w-full h-[40%] bg-zinc-50 p-5">
@@ -92,7 +92,7 @@ export default function Journal() {
                             <div className="w-1/2 h-[300px] overflow-hidden">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <Link href={'/journal'}>
-                                        <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/blowup.jpg'} alt="image" height={442} width={680} />
+                                        <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/moa1.jpg'} alt="image" height={442} width={680} />
                                     </Link>
                                 </div>
                                 <div className="w-full h-[40%] bg-zinc-50 p-5">
