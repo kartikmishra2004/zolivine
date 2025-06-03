@@ -9,12 +9,11 @@ export default function Home() {
   return (
     <section>
       <Hero />
-      <div className="h-screen w-full"></div>
-      {/* <Features />
+      <Features />
       <Explore />
       <Information />
       <Offers />
-      <Journal /> */}
+      <Journal />
     </section>
   );
 }
