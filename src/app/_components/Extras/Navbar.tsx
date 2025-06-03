@@ -2,7 +2,7 @@
 import { RefObject, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Menu, ShoppingCart, User } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import SideMenu from "./SideMenu";
 import { lobster } from "@/utils/fonts";
