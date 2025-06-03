@@ -91,9 +91,9 @@ export default function Navbar() {
             <SideMenu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
             <NavMenu open={navMenuOpen} />
             <nav ref={navRef} className={`fixed z-40 lg:px-20 md:px-10 px-6 flex justify-between items-center w-full h-[4.5rem] transition-colors duration-300 ${scrolled && !navMenuOpen ? 'shadow' : ''} ${scrolled ? "bg-zinc-50 text-zinc-700" : "text-zinc-50"}`}>
-                <span onClick={() => setNavMenuOpen(!navMenuOpen)} className={`${navMenuOpen ? 'space-y-0' : 'space-y-2'}`}>
-                    <div className={`${scrolled || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? 'rotate-45' : 'rotate-0'} sm:hidden block transition-all duration-500 w-7 h-[1px]`}></div>
-                    <div className={`${scrolled || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? '-rotate-45' : 'rotate-0'} sm:hidden block transition-all duration-500 w-7 h-[1px]`}></div>
+                <span onClick={() => setNavMenuOpen(!navMenuOpen)} className={`${navMenuOpen ? 'space-y-0' : 'space-y-2'} sm:hidden block cursor-pointer`}>
+                    <div className={`${scrolled || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? 'rotate-45' : 'rotate-0'} transition-all duration-500 w-7 h-[1px]`}></div>
+                    <div className={`${scrolled || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? '-rotate-45' : 'rotate-0'} transition-all duration-500 w-7 h-[1px]`}></div>
                 </span>
                 <Link href="/" className="w-32">
                     <h1 className={`${lobster.className} text-center sm:text-start text-[1.7rem] transition-colors duration-500 ease-in-out ${scrolled || navMenuOpen ? "text-zinc-700" : "text-zinc-50"}`}>Zolivine</h1>
