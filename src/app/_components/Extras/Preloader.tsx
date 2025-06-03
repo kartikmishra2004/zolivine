@@ -120,13 +120,13 @@ export default function Preloader() {
         }, 'x');
 
         tl.to(leftBgRef.current, {
-            top: '-100%',
+            top: '-110%',
             duration: 1,
             ease: 'power4.inOut',
         }, 'x');
 
         tl.to(rightBgRef.current, {
-            top: '-100%',
+            top: '-110%',
             duration: 1,
             delay: 0.1,
             ease: 'power4.inOut'
@@ -161,7 +161,7 @@ export default function Preloader() {
                         <h1 ref={logo2Ref} className={`${lobster.className} translate-y-[100%] text-6xl text-zinc-50 px-0.5`}>vine</h1>
                     </span>
                 </div>
-                <span ref={lineRef} className="h-screen w-[1px] bg-zinc-400 z-[9999] top-[-100%] fixed left-1/2"></span>
+                <span ref={lineRef} className="h-screen w-[1px] bg-zinc-400 z-[9999] sm:top-[-100%] top-[-110%] fixed left-1/2"></span>
                 <section ref={rightBgRef} className="fixed top-0 right-0 overflow-hidden z-50 h-screen w-1/2 bg-zinc-800"></section>
             </>
         )

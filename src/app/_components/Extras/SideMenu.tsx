@@ -16,7 +16,7 @@ export default function SideMenu({ setMenuOpen, menuOpen }: Props) {
     const [arrowHovered, setArrowHovered] = useState(false)
     return (
         <>
-            <section onClick={() => setMenuOpen(false)} className={`w-full h-screen bg-black/40 z-[9999] ${menuOpen ? "fixed sm:block hidden" : "hidden"} transition-all duration-700 ease-in-out ${menuOpen ? "opacity-100" : "opacity-0"}`}></section>
+            <section onClick={() => setMenuOpen(false)} className={`w-full h-screen bg-black/40 z-[9999] ${menuOpen ? "fixed" : "hidden"} transition-all duration-700 ease-in-out ${menuOpen ? "opacity-100" : "opacity-0"}`}></section>
             <div className={`fixed z-[99999] sm:w-[45%] md:w-1/3 w-full h-screen bg-zinc-50 transition-all duration-700 ease-in-out ${menuOpen ? "right-0" : "right-[-100%]"}`}>
                 <div className="w-full h-[10%] flex justify-between items-center px-4 lg:px-14">
                     <h1 className="text-4xl text-zinc-700">Cart<sup className="text-xl">({products.length})</sup></h1>

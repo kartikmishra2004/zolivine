@@ -84,21 +84,21 @@ export default function Hero() {
 
 
     return (
-        <section ref={ScreenRef} className="relative overflow-hidden h-screen">
-            <video ref={videoRef} className="w-full absolute h-screen object-cover z-0" autoPlay loop muted playsInline preload="auto" poster="/images/hero-poster.png">
+        <section ref={ScreenRef} className="relative overflow-hidden sm:h-screen h-[94vh]">
+            <video ref={videoRef} className="w-full absolute sm:h-screen h-[94vh] object-cover z-0" autoPlay loop muted playsInline preload="auto" poster="/images/hero-poster.png">
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
-            <div className="w-full relative h-screen flex justify-between flex-col items-center z-10">
-                <div className="flex justify-center items-center flex-col gap-3 mt-36">
-                    <h1 className="text-[5.5rem] text-zinc-50 font-semibold leading-20 flex flex-col items-center tracking-tighter">
-                        <div className="overflow-hidden h-22 w-max">
+            <div className="w-full relative sm:h-screen h-[94vh] flex justify-between flex-col items-center z-10">
+                <div className="flex justify-center items-center flex-col gap-3 mt-36 pt-20 lg:pt-0">
+                    <h1 className="lg:text-[5.5rem] md:text-7xl sm:text-6xl text-[2.5rem] text-zinc-50 font-semibold lg:leading-20 md:leading-15 sm:leading-12 leading-9.5 flex flex-col items-center tracking-tighter">
+                        <div className="overflow-hidden lg:h-22 w-max">
                             <div ref={heroTitle1Ref} className="translate-y-24">
                                 <span className={`tracking-tighter font-normal ${EditorialNew.className}`}>True</span> to Essence,
                             </div>
                         </div>
-                        <div className="overflow-hidden b h-22 w-max px-2">
+                        <div className="overflow-hidden b lg:h-22 w-max px-2">
                             <div ref={heroTitle2Ref} className="translate-y-24">
                                 kind to <span className={`tracking-tighter font-normal ${EditorialNew.className}`}>Nature</span>
                             </div>
@@ -113,9 +113,10 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-                <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} href={'/products'} ref={buttonRef} className="w-[47vw] scale-0 h-[3.7rem] cursor-pointer rounded-4xl bg-zinc-50 relative flex justify-center items-center mb-10">
-                    <h1 className="text-zinc-700 underline text-xs tracking-wider">EXPLORE ALL PRODUCTS</h1>
-                    <ArrowButton hover={arrowHovered} />
+                <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} href={'/products'} ref={buttonRef} className="sm:w-[47vw] w-4/5 scale-0 sm:h-[3.7rem] h-[3rem] cursor-pointer rounded-4xl bg-zinc-50 relative flex justify-center items-center mb-20 sm:mb-10">
+                    <h1 className="text-zinc-700 underline sm:text-xs text-[10px] tracking-wider">EXPLORE ALL PRODUCTS</h1>
+                    <ArrowButton className="sm:flex hidden" hover={arrowHovered} />
+                    <ArrowButton varient="sm" className="sm:hidden flex" hover={arrowHovered} />
                 </Link>
             </div>
         </section>
