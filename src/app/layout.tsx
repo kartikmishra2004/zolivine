@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <body className="text-zinc-50 overflow-y-auto overflow-x-hidden w-full">
           <LoadingProvider>
             <Preloader />
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
           </LoadingProvider>
         </body>

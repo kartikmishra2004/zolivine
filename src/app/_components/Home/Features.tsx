@@ -105,51 +105,54 @@ export default function Features() {
 
   return (
     <section ref={overlayRef} className="w-full h-max bg-zinc-50">
-      <div className="w-full px-20 py-14 h-[340px] flex">
-        <div className="w-1/2 relative h-full flex flex-col gap-7">
+      <div className="w-full sm:px-20 px-5 py-14 h-[340px] flex">
+        <div className="md:w-1/2 w-full relative h-full flex flex-col gap-7">
           <div className="">
             <div className="overflow-hidden">
-              <h1 ref={heading1Ref} className="text-6xl text-zinc-700 font-semibold tracking-wider">
+              <h1 ref={heading1Ref} className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl text-zinc-700 font-semibold tracking-wider">
                 PURE, RARE,
               </h1>
             </div>
             <div className="overflow-hidden">
-              <h1 ref={heading2Ref} className="text-6xl text-zinc-700 font-semibold tracking-wider">
+              <h1 ref={heading2Ref} className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl text-zinc-700 font-semibold tracking-wider">
                 SOPHISTICATION
               </h1>
             </div>
+            <div className="overflow-hidden">
+              <h1 className={`font-semibold text-4xl p-2.5 block lg:hidden underline ${EditorialNew.className} text-zinc-700`}>fragrance.</h1>
+            </div>
           </div>
-          <p className="text-xs tracking-wide text-zinc-700 w-[40%]">
+          <p className="text-xs tracking-wide text-zinc-700 lg:w-[40%] w-3/4">
             Small-batch perfumes with golden notes and pure botanicals — no compromises.
           </p>
-          <h1 className={`absolute font-semibold bottom-[15px] right-0 text-7xl ${EditorialNew.className} text-zinc-700`}>fragrance.</h1>
-          <div ref={lineRef} className="absolute w-[310px] h-1 bg-zinc-700 bottom-0 left-[370px]"></div>
+          <h1 className={`absolute font-semibold xl:bottom-[15px] lg:bottom-[40px] lg:block hidden right-0 xl:text-7xl lg:text-6xl ${EditorialNew.className} text-zinc-700`}>fragrance.</h1>
+          <div ref={lineRef} className="xl:block hidden absolute w-[310px] h-1 bg-zinc-700 bottom-0 right-0"></div>
         </div>
       </div>
-      <div className="h-[1150px] w-full relative overflow-hidden">
-        <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 left-[20%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
+      <div className="lg:h-[1150px] h-[600px] w-full relative overflow-hidden">
+        <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 xl:left-[25%] left-[30%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Botanical Alchemy</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Blended with rare botanicals and golden essences, our perfumes are rooted in nature&apos;s finest.</p>
         </div>
-        <div ref={box2Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] left-[3%] bottom-[20%] h-[20rem] rounded-xl z-30">
+        <div ref={box2Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 w-[15rem] left-[3%] bottom-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><FlaskConical className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 font-semibold text-center">Crafted<br /> in Small Batches</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Each scent is hand-poured in limited runs, ensuring exclusivity, quality, and attention to detail.</p>
         </div>
-        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[20%] -bottom-[34%] h-[20rem] rounded-xl z-30">
+        <div ref={box3Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 w-[15rem] xl:right-[25%] right-[30%] -bottom-[34%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><ShieldCheck className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Pure, <br /> No Compromise</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">Free from harmful additives. Only pure natural extracts and clean ingredients go into every bottle.</p>
         </div>
-        <div ref={box4Ref} className="absolute p-5 bg-[#eeeeee] flex flex-col items-center justify-center gap-6 w-[15rem] right-[3%] bottom-0 h-[20rem] rounded-xl z-30">
+        <div ref={box4Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 w-[15rem] right-[3%] bottom-0 h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Search className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Honest Luxury</h1>
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
-        <Image priority width={500} height={500} ref={leafRef} className="absolute select-none z-20 w-48 right-[22%] bottom-[30%]" src="/images/leaf.png" alt="leaf" />
-        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 w-48 left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
-        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image bottom-[30px] left-[170px] sm:left-[100px] lg:left-[150px] inset-0 lg:w-full w-[80%] lg:h-[90%] h-[80%] object-cover z-0" />
+        <Image priority width={500} height={500} ref={leafRef} className="absolute hidden lg:block select-none z-20 w-48 right-[22%] bottom-[30%]" src="/images/leaf.png" alt="leaf" />
+        <Image priority width={500} height={500} ref={empressRef} className="absolute hidden lg:block select-none z-20 w-48 left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
+        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image sm:left-[100px] lg:left-[150px] bottom-32 lg:inset-0 lg:w-full w-[100%] h-[100%] sm:w-[80%] sm:h-[90%] object-cover z-0" />
         <div className="absolute inset-0 bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
           WebkitMaskImage: "radial-gradient(circle at center, transparent 40%, white 40.1%)",
