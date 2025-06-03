@@ -8,12 +8,12 @@ import Journal from "./_components/Home/Journal";
 export default function Home() {
   return (
     <section>
-      {/* <Hero /> */}
+      <Hero />
       <Features />
-      {/* <Explore />
+      <Explore />
       <Information />
       <Offers />
-      <Journal /> */}
+      <Journal />
     </section>
   );
 }
