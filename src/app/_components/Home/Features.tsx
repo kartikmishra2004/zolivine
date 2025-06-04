@@ -129,7 +129,7 @@ export default function Features() {
           <div ref={lineRef} className="xl:block hidden absolute w-[310px] h-1 bg-zinc-700 bottom-0 right-0"></div>
         </div>
       </div>
-      <div className="lg:h-[1150px] h-[600px] w-full relative overflow-hidden">
+      <div className="lg:h-[1150px] sm:h-[600px] h-[400px] w-full relative overflow-hidden">
         <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 xl:left-[25%] left-[30%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Botanical Alchemy</h1>
@@ -151,15 +151,37 @@ export default function Features() {
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
         <Image priority width={500} height={500} ref={leafRef} className="absolute hidden lg:block select-none z-20 w-48 right-[22%] bottom-[30%]" src="/images/leaf.png" alt="leaf" />
-        <Image priority width={500} height={500} ref={empressRef} className="absolute hidden lg:block select-none z-20 w-48 left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
-        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image sm:left-[100px] lg:left-[150px] bottom-32 lg:inset-0 lg:w-full w-[100%] h-[100%] sm:w-[80%] sm:h-[90%] object-cover z-0" />
-        <div className="absolute inset-0 bg-zinc-50" style={{
+        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 lg:w-48 w-20 left-[15%] sm:left-[20%] md:left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
+        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image sm:left-[100px] lg:left-[150px] sm:bottom-32 bottom-24 lg:inset-0 lg:w-full w-[100%] h-[100%] sm:w-[80%] sm:h-[90%] object-cover z-0" />
+        <div className="absolute inset-0 scale-125 sm:scale-100 bg-gradient-to-b bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
           WebkitMaskImage: "radial-gradient(circle at center, transparent 40%, white 40.1%)",
           maskComposite: "exclude",
           WebkitMaskComposite: "destination-out",
           transformOrigin: "center",
         }}></div>
+      </div>
+      <div className="w-full flex justify-center items-center lg:hidden h-[500px] bg-gradient-to-b from-zinc-50 via-[#eeeeee] to-[#eeeeee]">
+        <div className="grid grid-cols-2 relative gap-x-14 sm:gap-x-52 gap-y-14 max-w-4xl mx-auto py-12">
+          <div className="absolute inset-y-0 left-1/2 w-px bg-gray-300 transform -translate-x-1/2"></div>
+          <div className="absolute inset-x-0 top-1/2 h-px bg-gray-300 transform -translate-y-1/2"></div>
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="sm:w-28 sm:h-28 w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
+            <p className="font-semibold sm:text-sm text-xs">Botanical <br /> Alchemy</p>
+          </div>
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="sm:w-28 sm:h-28 w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><FlaskConical className="text-zinc-700" strokeWidth={1.5} /></div>
+            <p className="font-semibold sm:text-sm text-xs">Crafted<br /> in Small Batches</p>
+          </div>
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="sm:w-28 sm:h-28 w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><ShieldCheck className="text-zinc-700" strokeWidth={1.5} /></div>
+            <p className="font-semibold sm:text-sm text-xs">Pure, <br /> No Compromise</p>
+          </div>
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="sm:w-28 sm:h-28 w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Search className="text-zinc-700" strokeWidth={1.5} /></div>
+            <p className="font-semibold sm:text-sm text-xs">Honest <br /> Luxury</p>
+          </div>
+        </div>
       </div>
     </section>
   )
