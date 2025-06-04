@@ -129,7 +129,7 @@ export default function Features() {
           <div ref={lineRef} className="xl:block hidden absolute w-[310px] h-1 bg-zinc-700 bottom-0 right-0"></div>
         </div>
       </div>
-      <div className="lg:h-[1150px] sm:h-[600px] h-[400px] w-full relative overflow-hidden">
+      <div className="lg:h-[1150px] sm:h-[600px] h-[300px] w-full relative overflow-hidden">
         <div ref={box1Ref} className="absolute p-5 bg-[#eeeeee] lg:flex hidden flex-col items-center justify-center gap-6 xl:left-[25%] left-[30%] w-[15rem] top-[20%] h-[20rem] rounded-xl z-30">
           <div className=" w-22 h-22 bg-zinc-50 flex justify-center items-center rounded-full"><Leaf className="text-zinc-700" strokeWidth={1.5} /></div>
           <h1 className="text-zinc-700 text-center font-semibold">Botanical Alchemy</h1>
@@ -151,9 +151,10 @@ export default function Features() {
           <p className="text-xs tracking-wide text-zinc-700 text-center">No secrets. Every note, ingredient, and process is shared — because luxury should be transparent.</p>
         </div>
         <Image priority width={500} height={500} ref={leafRef} className="absolute hidden lg:block select-none z-20 w-48 right-[22%] bottom-[30%]" src="/images/leaf.png" alt="leaf" />
-        <Image priority width={500} height={500} ref={empressRef} className="absolute select-none z-20 lg:w-48 w-20 left-[15%] sm:left-[20%] md:left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
-        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute select-none man-image sm:left-[100px] lg:left-[150px] sm:bottom-32 bottom-24 lg:inset-0 lg:w-full w-[100%] h-[100%] sm:w-[80%] sm:h-[90%] object-cover z-0" />
-        <div className="absolute inset-0 scale-125 sm:scale-100 bg-gradient-to-b bg-zinc-50" style={{
+        <Image priority width={500} height={500} ref={empressRef} className="absolute hidden lg:block select-none z-20 lg:w-48 w-20 left-[15%] sm:left-[20%] md:left-[25%] -bottom-20" src="/images/empress.png" alt="empress" />
+        <Image priority width={3000} height={3000} ref={imageRef} src="/images/man-spray-min.jpg" alt="Face" className="absolute hidden lg:block select-none man-image sm:left-[100px] lg:left-[150px] sm:bottom-32 bottom-24 lg:inset-0 lg:w-full w-[100%] h-[100%] sm:w-[80%] sm:h-[90%] object-cover z-0" />
+        <Image priority width={3000} height={3000} src="/images/man-spray-min.jpg" alt="Face" className="absolute block lg:hidden select-none left-5 w-[100%] h-[100%] object-cover z-0" />
+        <div className="absolute inset-0 scale-140 sm:scale-100 bg-gradient-to-b bg-zinc-50" style={{
           maskImage: "radial-gradient(circle at center, transparent 45%, white 40.1%)",
           WebkitMaskImage: "radial-gradient(circle at center, transparent 40%, white 40.1%)",
           maskComposite: "exclude",

@@ -198,15 +198,15 @@ export default function Explore() {
 
   return (
     <section ref={screenRef} className="w-full h-max bg-zinc-50">
-      <div className="w-[90%] h-[1px] bg-zinc-400/70 mx-auto"></div>
-      <div className="w-full flex-col h-[330px] flex justify-center items-center relative">
+      <div className="w-[90%] lg:block hidden h-[1px] bg-zinc-400/70 mx-auto"></div>
+      <div className="w-full flex-col md:h-[330px] sm:h-[230px] h-[130px] flex justify-center items-center relative">
         <div className="overflow-hidden">
-          <h1 ref={heading1Ref} className="text-6xl tracking-wide font-semibold text-zinc-700">
+          <h1 ref={heading1Ref} className="md:text-6xl sm:text-5xl text-3xl tracking-wide font-semibold text-zinc-700">
             EXPLORE
           </h1>
         </div>
         <div className="overflow-hidden">
-          <h1 ref={heading2Ref} className={`text-[5rem] leading-24 h-[90px] flex items-start text-zinc-700 font-normal ${EditorialNew.className} pr-1 tracking-tighter`}>
+          <h1 ref={heading2Ref} className={`md:text-[5rem] sm:text-[4.5rem] text-[2.5rem] md:leading-24 sm:leading-16 leading-5 sm:h-[90px] h-[30px] flex items-start text-zinc-700 font-normal ${EditorialNew.className} pr-1 tracking-tighter`}>
             raw luxury
           </h1>
         </div>
@@ -214,38 +214,38 @@ export default function Explore() {
       </div>
 
       {/* Product section #1 */}
-      <div className="relative h-[120vh] w-full overflow-hidden">
-        <Image priority height={2000} width={2000} ref={image1Ref} src="/images/women-spray.jpg" alt="women" className="absolute select-none inset-0 w-full scale-200 -top-[7%] h-full object-contain z-0" />
-        <div className="absolute inset-0 bg-zinc-50 z-10"
+      <div className="relative sm:h-[120vh] h-[85vh] w-full overflow-hidden">
+        <Image priority height={2000} width={2000} ref={image1Ref} src="/images/women-spray.jpg" alt="women" className="absolute lg:block hidden select-none inset-0 w-full scale-200 -top-[7%] h-full object-contain z-0" />
+        <div className="absolute inset-0 lg:left-0 left-[-100%] bg-zinc-50 z-10"
           style={{
             maskImage: "linear-gradient(to right, transparent 50%, white 50%)",
             WebkitMaskImage: "linear-gradient(to right, transparent 50%, white 50%)",
             maskComposite: "exclude",
             WebkitMaskComposite: "destination-out",
           }}>
-          <div className="w-[50.1%] px-16 absolute right-0 h-[24%] flex justify-between items-center">
+          <div className="w-[50.1%] lg:px-16 px-7 absolute right-0 h-[24%] flex justify-between items-center">
             <div className="">
               <div className="overflow-hidden">
-                <h1 ref={heading3Ref} className="text-5xl text-zinc-700">
+                <h1 ref={heading3Ref} className="sm:text-5xl text-3xl text-zinc-700">
                   Pure
                 </h1>
               </div>
               <div className="overflow-hidden">
-                <h1 ref={heading4Ref} className={`text-5xl leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
+                <h1 ref={heading4Ref} className={`sm:text-5xl text-3xl sm:leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
                   Brilliance
                 </h1>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative pb-10 sm:pb-0">
               <Link className="mr-16" onMouseEnter={() => setArrow1Hovered(true)} onMouseLeave={() => setArrow1Hovered(false)} href={'/products'}>
                 <ArrowButton hover={arrow1Hovered} />
               </Link>
             </div>
           </div>
-          <div className="w-[50.1%] px-16 absolute right-0 bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide">
+          <div className="w-[50.1%] lg:px-16 px-7 absolute right-0 bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide">
             <div className="flex-nowrap flex gap-4">
               {pureBrilliance.map((item, id) => (
-                <Link href={'/products'} key={id} className="product-card1 bg-red-200 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={'/products'} key={id} className="product-card1 bg-red-200 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
                   <Image height={416} width={304} alt='product-img' className="absolute select-none w-full h-full object-cover z-0" src={item.image} />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
@@ -261,45 +261,45 @@ export default function Explore() {
               ))}
             </div>
           </div>
-          <div className="w-[50.1%] absolute right-0 bottom-0 h-[19%] px-16 pt-10">
-            <p className="text-sm text-zinc-700 w-[300px]">STAY RADIANT AND REFRESHED, EFFORTLESSLY SCENTED BY NATURE.</p>
+          <div className="w-[50.1%] absolute right-0 bottom-0 h-[19%] lg:px-16 px-7 sm:pt-10">
+            <p className="sm:text-sm text-xs text-zinc-700 w-[300px]">STAY RADIANT AND REFRESHED, EFFORTLESSLY SCENTED BY NATURE.</p>
           </div>
         </div>
       </div>
 
       {/* Product section #2 */}
-      <div className="relative h-[120vh] w-full overflow-hidden">
-        <Image priority height={2000} width={2000} ref={image2Ref} src="/images/man-flower.jpg" alt="women" className="absolute select-none inset-0 w-full scale-150 -top-[7%] h-full object-contain z-0" />
-        <div className="absolute inset-0 bg-zinc-50 z-10"
+      <div className="relative sm:h-[120vh] h-[85vh] w-full overflow-hidden">
+        <Image priority height={2000} width={2000} ref={image2Ref} src="/images/man-flower.jpg" alt="women" className="absolute lg:block hidden select-none inset-0 w-full scale-150 -top-[7%] h-full object-contain z-0" />
+        <div className="absolute lg:right-0 right-[-100%] inset-0 bg-zinc-50 z-10"
           style={{
             maskImage: "linear-gradient(to left, transparent 50%, white 50%)",
             WebkitMaskImage: "linear-gradient(to left, transparent 50%, white 50%)",
             maskComposite: "exclude",
             WebkitMaskComposite: "destination-out",
           }}>
-          <div className="w-[50.1%] px-16 absolute left-0 h-[24%] flex justify-between items-center">
+          <div className="w-[50.1%] lg:px-16 px-7 absolute left-0 h-[24%] flex justify-between items-center">
             <div className="">
               <div className="overflow-hidden">
-                <h1 ref={heading5Ref} className="text-5xl text-zinc-700">
+                <h1 ref={heading5Ref} className="sm:text-5xl text-3xl text-zinc-700">
                   Gilded
                 </h1>
               </div>
               <div className="overflow-hidden">
-                <h1 ref={heading6Ref} className={`text-5xl leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
+                <h1 ref={heading6Ref} className={`sm:text-5xl text-3xl sm:leading-16 h-[47px] flex items-start text-zinc-700 ${EditorialNew.className} pr-1 tracking-tight font-extralight`}>
                   Essence
                 </h1>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative pb-10 sm:pb-0">
               <Link className="mr-16" onMouseEnter={() => setArrow2Hovered(true)} onMouseLeave={() => setArrow2Hovered(false)} href={'/products'}>
                 <ArrowButton hover={arrow2Hovered} />
               </Link>
             </div>
           </div>
-          <div className="w-[50.1%] px-16 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide" ref={scrollContainerRef}>
+          <div className="w-[50.1%] lg:px-16 px-7 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide" ref={scrollContainerRef}>
             <div className="flex-nowrap flex gap-4">
               {gildedEssence.map((item, id) => (
-                <Link href={'/products'} key={id} className="bg-[#d8cec4] product-card2 min-w-[19rem] h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={'/products'} key={id} className="bg-[#d8cec4] product-card2 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
                   <Image height={416} width={304} className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product-img" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
@@ -315,8 +315,8 @@ export default function Explore() {
               ))}
             </div>
           </div>
-          <div className="w-[50.1%] absolute left-0 bottom-0 h-[19%] px-16 pt-10">
-            <p className="text-sm text-zinc-700 w-[300px]">GLOW IN GOLDEN GRACE, EFFORTLESSLY WRAPPED IN TIMELESS SCENT.</p>
+          <div className="w-[50.1%] absolute left-0 bottom-0 h-[19%] lg:px-16 px-7 sm:pt-10">
+            <p className="sm:text-sm text-xs text-zinc-700 w-[300px]">GLOW IN GOLDEN GRACE, EFFORTLESSLY WRAPPED IN TIMELESS SCENT.</p>
           </div>
         </div>
       </div>
