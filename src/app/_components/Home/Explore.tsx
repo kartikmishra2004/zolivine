@@ -206,7 +206,7 @@ export default function Explore() {
           </h1>
         </div>
         <div className="overflow-hidden">
-          <h1 ref={heading2Ref} className={`md:text-[5rem] sm:text-[4.5rem] text-[2.5rem] md:leading-24 sm:leading-16 leading-5 sm:h-[90px] h-[30px] flex items-start text-zinc-700 font-normal ${EditorialNew.className} pr-1 tracking-tighter`}>
+          <h1 ref={heading2Ref} className={`md:text-[5rem] sm:text-[4.5rem] text-[2.5rem] md:leading-24 sm:leading-16 leading-5 sm:pt-0 pt-3 sm:h-[90px] h-[50px] flex items-start text-zinc-700 font-normal ${EditorialNew.className} pr-1 tracking-tighter`}>
             raw luxury
           </h1>
         </div>
