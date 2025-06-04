@@ -85,7 +85,7 @@ export default function Information() {
         <section ref={sectionRef} className="w-full xl:h-[160vh] lg:h-[140vh] h-[110vh] lg:pt-32 bg-[#eeeeee] overflow-hidden">
             <div className="w-full flex flex-col justify-center items-center lg:h-3/5 sm:h-[55%] h-[30%]">
                 <div className="flex overflow-hidden relative sm:justify-center justify-start items-center w-full">
-                    <h1 ref={title1} className="xl:text-[10rem] lg:text-[8rem] md:  -[6rem] text-[4rem] leading-none text-zinc-700 font-semibold sm:flex hidden flex-col items-center tracking-tight">RADICAL</h1>
+                    <h1 ref={title1} className="xl:text-[10rem] lg:text-[8rem] md:text-[6rem] text-[4rem] leading-none text-zinc-700 font-semibold sm:flex hidden flex-col items-center tracking-tight">RADICAL</h1>
                     <span className="sm:absolute xl:left-48 lg:left-32 left-7 md:left-14 bottom-6 select-none text-zinc-400 xl:text-xs text-[10px] font-semibold text-center tracking-wide py-0.5 xl:px-12 px-8 sm:mx-0 mx-7 sm:my-0 my-3 rounded-full border">ETHOS</span>
                 </div>
                 <div className="flex overflow-hidden justify-center items-center">
