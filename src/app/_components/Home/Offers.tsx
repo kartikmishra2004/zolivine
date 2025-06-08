@@ -94,7 +94,7 @@ export default function Offers() {
             </div>
             <div className="sm:hidden block w-full bg-zinc-50 relative mt-24">
                 <Image className="select-none object-contain absolute left-[-50%] scale-200 z-0" src={'/images/gold-perfume.jpg'} alt="perfume" height={2000} width={2000}></Image>
-                <div className="absolute -top-32 flex justify-between w-full p-7">
+                <div className="absolute -top-32 flex justify-between w-full p-7 overflow-hidden">
                     <div className="">
                         <div className="">
                             <h1 className="text-3xl font-semibold text-zinc-700">EXCITING</h1>
@@ -106,7 +106,7 @@ export default function Offers() {
                             <p className="mt-2 text-sm text-zinc-600 leading-4 w-2/3" data-v-7cc9f5eb="">Shop now to get a chance to win 2 extra products. Grab the offer before it ends.</p>
                         </div>
                     </div>
-                    <div className="">
+                    <div className="pr-2">
                         <Link href='/products'>
                             <div onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} className="relative cursor-pointer -rotate-45">
                                 <ArrowButton hover={arrowHovered} varient="lg" />

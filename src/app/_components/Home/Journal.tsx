@@ -43,16 +43,25 @@ export default function Journal() {
     });
 
     return (
-        <section ref={screenRef} className="w-full flex h-[120vh] bg-zinc-700">
-            <div className="w-1/2 flex justify-center items-center h-full">
-                <div className="h-[700px] w-[680px]">
-                    <div className="w-full relative h-[65%] overflow-hidden">
+        <section ref={screenRef} className="w-full flex sm:flex-row sm:pt-0 pt-[630px] flex-col p-7 sm:h-[120vh] bg-zinc-700">
+            <div className="flex-col sm:hidden flex items-center w-full h-[200px]">
+                <div className="overflow-hidden">
+                    <h1 ref={title1Ref} className={`sm:text-7xl text-5xl sm:h-15 text-zinc-50 font-normal ${EditorialNew.className}`}>clean</h1>
+                </div>
+                <div className="overflow-hidden">
+                    <h1 ref={title2Ref} className="sm:text-6xl text-4xl font-semibold text-zinc-50">JOURNAL</h1>
+                </div>
+                <p className="mt-4 sm:text-sm text-xs text-zinc-300 sm:leading-4 leading-3.5 sm:w-1/2 text-center">Fragrance tips, scent layering rituals, and conscious aroma choices for a more elevated, mindful lifestyle.</p>
+            </div>
+            <div className="sm:w-1/2 flex justify-center items-center h-full">
+                <div className="lg:h-[700px] lg:w-[680px]">
+                    <div className="w-full relative overflow-hidden">
                         <Link href={'/journal'}>
                             <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/blowup.jpg'} alt="image" height={442} width={680} />
                         </Link>
-                        <span className="absolute top-0 text-xs mt-6 ml-8 bg-zinc-50 px-6 rounded-full py-0.5 tracking-wider font-semibold text-zinc-700">FEATURED</span>
+                        <span className="absolute top-0 text-xs sm:mt-6 sm:ml-8 mt-4 ml-5 bg-zinc-50 px-6 rounded-full py-0.5 tracking-wider font-semibold text-zinc-700">FEATURED</span>
                     </div>
-                    <div className="w-full h-[35%] bg-zinc-50 p-5">
+                    <div className="w-full bg-zinc-50 p-5">
                         <h1 className="text-2xl text-zinc-700 tracking-tight w-[90%]">Fragrance Traditions from Around the World: Notes and Rituals Worth Exploring</h1>
                         <p className="mt-4 text-sm text-zinc-400 leading-4 w-[90%]">Rooted in centuries of olfactory heritage and refined through modern aroma science, Zolivine perfumes blend time-honored rituals with safe, skin-loving ingredients — offering scents that are both luxurious and conscious of the planet.</p>
                         <div className="mt-4 pt-7 flex justify-between">
@@ -62,26 +71,26 @@ export default function Journal() {
                     </div>
                 </div>
             </div>
-            <div className="w-1/2 h-full">
-                <div className="flex flex-col justify-center items-center h-full">
-                    <div className="flex flex-col justify-center items-center w-full h-[200px]">
+            <div className="sm:w-1/2 h-full">
+                <div className="flex flex-col justify-center sm:pt-0 pt-20 items-center h-full">
+                    <div className="flex-col sm:flex hidden justify-center items-center w-full h-[200px]">
                         <div className="overflow-hidden">
-                            <h1 ref={title1Ref} className={`text-7xl h-15 text-zinc-50 font-normal ${EditorialNew.className}`}>clean</h1>
+                            <h1 ref={title1Ref} className={`sm:text-7xl text-5xl sm:h-15 text-zinc-50 font-normal ${EditorialNew.className}`}>clean</h1>
                         </div>
                         <div className="overflow-hidden">
-                            <h1 ref={title2Ref} className="text-6xl font-semibold text-zinc-50">JOURNAL</h1>
+                            <h1 ref={title2Ref} className="sm:text-6xl text-4xl font-semibold text-zinc-50">JOURNAL</h1>
                         </div>
-                        <p className="mt-4 text-sm text-zinc-50 leading-4 w-1/2 text-center">Fragrance tips, scent layering rituals, and conscious aroma choices for a more elevated, mindful lifestyle.</p>
+                        <p className="mt-4 sm:text-sm text-xs text-zinc-300 sm:leading-4 leading-3.5 sm:w-1/2 text-center">Fragrance tips, scent layering rituals, and conscious aroma choices for a more elevated, mindful lifestyle.</p>
                     </div>
-                    <div className="w-full h-[400px] p-7">
-                        <div className="flex gap-4">
-                            <div className="w-1/2 h-[300px] overflow-hidden">
-                                <div className="w-full h-[60%] overflow-hidden">
+                    <div className="w-full sm:h-[400px] sm:p-7">
+                        <div className="flex sm:flex-row flex-col gap-4">
+                            <div className="sm:w-1/2 overflow-hidden">
+                                <div className="w-full overflow-hidden">
                                     <Link href={'/journal'}>
                                         <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/man.jpg'} alt="image" height={442} width={680} />
                                     </Link>
                                 </div>
-                                <div className="w-full h-[40%] bg-zinc-50 p-5">
+                                <div className="w-full bg-zinc-50 p-5">
                                     <h1 className=" text-zinc-700 tracking-tight w-[90%]">How Your Fragrance Routine Impacts Mood & Well-Being</h1>
                                     <div className="mt-4 flex justify-between">
                                         <h4 className="text-xs text-zinc-700">2 June 2025</h4>
@@ -89,13 +98,13 @@ export default function Journal() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-1/2 h-[300px] overflow-hidden">
-                                <div className="w-full h-[60%] overflow-hidden">
+                            <div className="sm:w-1/2 overflow-hidden">
+                                <div className="w-full overflow-hidden">
                                     <Link href={'/journal'}>
                                         <Image className="cursor-pointer hover:scale-100 scale-105 transition-all ease-out duration-500" src={'/images/moa1.jpg'} alt="image" height={442} width={680} />
                                     </Link>
                                 </div>
-                                <div className="w-full h-[40%] bg-zinc-50 p-5">
+                                <div className="w-full bg-zinc-50 p-5">
                                     <h1 className=" text-zinc-700 tracking-tight w-[90%]">Ways to Make Your Perfume Habit More Eco-Friendly</h1>
                                     <div className="mt-4 flex justify-between">
                                         <h4 className="text-xs text-zinc-700">2 June 2025</h4>
