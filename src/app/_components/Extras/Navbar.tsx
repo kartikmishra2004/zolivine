@@ -23,7 +23,7 @@ export default function Navbar() {
         {
             name: "SHOP",
             ref: shopRef,
-            src: "/shop",
+            src: "/products",
         },
         {
             name: "PHILOSOPHY",
