@@ -1,20 +1,24 @@
 'use client';
 
-import { useAppSelector } from "@/store/hooks";
-import { selectCartItems } from "@/store/cartSlice";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { selectCartItems, clearCart } from "@/store/cartSlice";
 import { selectProductBySlug } from "@/store/productsSlice";
+import { addOrder, Order } from "@/store/ordersSlice";
 import { EditorialNew } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useMemo } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ChevronLeft, ShieldCheck, Truck, CreditCard } from "lucide-react";
+import { ChevronLeft, ShieldCheck, Truck, CreditCard, Check, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
     const cartItems = useAppSelector(selectCartItems);
     const getProduct = useAppSelector(selectProductBySlug);
     const containerRef = useRef<HTMLDivElement>(null);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -29,6 +33,8 @@ export default function CheckoutPage() {
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+    const [orderSuccess, setOrderSuccess] = useState(false);
 
     const subtotal = cartItems.reduce((total, item) => {
         const p = getProduct(item.slug);
@@ -92,12 +98,52 @@ export default function CheckoutPage() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (validate()) {
-            alert('Order placed successfully!');
+            setIsPlacingOrder(true);
+            
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            const newOrder: Order = {
+                id: `ORD-${Math.floor(Math.random() * 90000) + 10000}`,
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                items: cartItems.map(item => {
+                    const p = getProduct(item.slug)!;
+                    return {
+                        slug: item.slug,
+                        name: p.name,
+                        quantity: item.quantity,
+                        price: p.price,
+                        image: p.image
+                    };
+                }),
+                total,
+                status: 'Processing',
+                shippingAddress: {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    address: formData.address,
+                    city: formData.city,
+                    postalCode: formData.postalCode
+                }
+            };
+
+            dispatch(addOrder(newOrder));
+            dispatch(clearCart());
+            
+            setIsPlacingOrder(false);
+            setOrderSuccess(true);
+            
+            // Redirect to profile after success animation
+            setTimeout(() => {
+                router.push('/profile');
+            }, 1500);
         }
     };
+
+    const isFormIncomplete = Object.values(formData).some(val => !val.trim());
 
     return (
         <main ref={containerRef} className="min-h-screen bg-zinc-50 pt-24 pb-20 px-6 md:px-12 lg:px-24">
@@ -190,8 +236,18 @@ export default function CheckoutPage() {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="w-full py-5 bg-zinc-700 text-zinc-50 rounded-full font-semibold tracking-[0.3em] text-[11px] cursor-pointer hover:bg-zinc-800 transition-all uppercase shadow-lg active:scale-[0.98]">
-                                    PLACE ORDER • ₹{total.toLocaleString()}
+                                <button 
+                                    type="submit" 
+                                    disabled={isFormIncomplete || isPlacingOrder || orderSuccess}
+                                    className={`w-full py-5 rounded-full font-semibold tracking-[0.3em] text-[11px] transition-all uppercase shadow-lg flex items-center justify-center gap-3 ${orderSuccess ? 'bg-green-600 text-white' : 'bg-zinc-700 text-zinc-50 hover:bg-zinc-800 active:scale-[0.98]'} disabled:opacity-30 disabled:cursor-not-allowed disabled:active:scale-100`}
+                                >
+                                    {isPlacingOrder ? (
+                                        <Loader2 className="animate-spin" size={18} />
+                                    ) : orderSuccess ? (
+                                        <><Check size={18} /> ORDER PLACED</>
+                                    ) : (
+                                        `PLACE ORDER • ₹${total.toLocaleString()}`
+                                    )}
                                 </button>
                             </form>
                         </section>

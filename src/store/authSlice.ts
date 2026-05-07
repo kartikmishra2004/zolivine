@@ -103,14 +103,13 @@ const authSlice = createSlice({
                 state.error = action.payload as string;
             });
     },
-    selectors: {
-        selectUser: (state) => state.user,
-        selectIsAuthenticated: (state) => state.isAuthenticated,
-        selectAuthLoading: (state) => state.loading,
-        selectAuthError: (state) => state.error,
-    },
 });
 
 export const { logout, clearError } = authSlice.actions;
-export const { selectUser, selectIsAuthenticated, selectAuthLoading, selectAuthError } = authSlice.selectors;
+
+export const selectUser = (state: any) => state.auth.user;
+export const selectIsAuthenticated = (state: any) => state.auth.isAuthenticated;
+export const selectAuthLoading = (state: any) => state.auth.loading;
+export const selectAuthError = (state: any) => state.auth.error;
+
 export default authSlice.reducer;

@@ -159,9 +159,9 @@ export default function LoginPage() {
 
                         <div ref={el => { contentRefs.current[5] = el; }} className="pt-4">
                             <button
-                                disabled={loading}
+                                disabled={loading || !formData.email.trim() || !formData.password.trim()}
                                 type="submit"
-                                className="w-full bg-zinc-800 text-zinc-50 py-4 font-semibold tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-zinc-900 transition-all active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 uppercase cursor-pointer"
+                                className="w-full bg-zinc-800 text-zinc-50 py-4 font-semibold tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-zinc-900 transition-all active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed disabled:active:scale-100 uppercase cursor-pointer"
                             >
                                 {loading ? (
                                     <Loader2 className="animate-spin" size={18} />

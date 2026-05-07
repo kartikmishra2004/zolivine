@@ -5,6 +5,7 @@ import uiReducer from './uiSlice';
 import authReducer from './authSlice';
 import journalReducer from './journalSlice';
 import galleryReducer from './gallerySlice';
+import ordersReducer from './ordersSlice';
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         auth: authReducer,
         journal: journalReducer,
         gallery: galleryReducer,
+        orders: ordersReducer,
     },
 });
 

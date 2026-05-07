@@ -21,7 +21,7 @@ export default function Navbar() {
     const isCartOpen = useAppSelector(selectIsCartOpen);
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
     // Pages with light backgrounds need dark navbar text from the start
-    const isLightPage = /^\/products\/[^/]+$/.test(pathname) || /^\/auth/.test(pathname) || /^\/journal/.test(pathname) || /^\/checkout/.test(pathname);
+    const isLightPage = /^\/products\/[^/]+$/.test(pathname) || /^\/auth/.test(pathname) || /^\/journal/.test(pathname) || /^\/checkout/.test(pathname) || /^\/profile/.test(pathname);
     const isDark = scrolled || isLightPage;
     const navRef = useRef<HTMLElement | null>(null);
     const shopRef = useRef<HTMLSpanElement | null>(null);
@@ -119,15 +119,9 @@ export default function Navbar() {
                         )}
                     </button>
                     <div className="h-5 border-l border-zinc-400"></div>
-                    {isAuthenticated ? (
-                        <button onClick={() => dispatch(logout())} className="cursor-pointer" title="Logout">
-                            <LogOut strokeWidth={1} className={`w-5 ${isDark ? "text-zinc-50" : "text-zinc-700"} transition-colors duration-300`} />
-                        </button>
-                    ) : (
-                        <Link href="/auth/login">
-                            <User strokeWidth={1} className={`w-5 ${isDark ? "text-zinc-50" : "text-zinc-700"} transition-colors duration-300`} />
-                        </Link>
-                    )}
+                    <Link href={isAuthenticated ? "/profile" : "/auth/login"}>
+                        <User strokeWidth={1} className={`w-5 ${isDark ? "text-zinc-50" : "text-zinc-700"} transition-colors duration-300`} />
+                    </Link>
                 </div>
                 <div className="sm:hidden block">
                     <button onClick={() => dispatch(setCartOpen(true))} className="cursor-pointer relative">
