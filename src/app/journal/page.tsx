@@ -96,7 +96,7 @@ export default function Journal() {
 
                     {/* Header */}
                     <div ref={headerRef} className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 border-b border-zinc-300 pb-12">
-                        <h1 className={`${EditorialNew.className} font-light text-[6rem] md:text-[11rem] leading-[0.8] tracking-tighter uppercase text-zinc-800`}>
+                        <h1 className={`${EditorialNew.className} font-light text-[4rem] sm:text-[6rem] md:text-[11rem] leading-[0.8] tracking-tighter uppercase text-zinc-800`}>
                             Journal
                         </h1>
                         <p className="text-zinc-500 max-w-sm mt-8 md:mt-0 md:text-right tracking-wide leading-relaxed text-sm md:text-base font-medium">

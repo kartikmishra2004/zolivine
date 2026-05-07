@@ -74,12 +74,12 @@ export default function ProductGrid() {
                             All <span className={`font-normal ${EditorialNew.className}`}>Products</span>
                         </h1>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-0 sm:gap-1 overflow-x-auto no-scrollbar pb-2 sm:pb-0">
                         {filters.map((filter) => (
                             <button
                                 key={filter}
                                 onClick={() => dispatch(setFilter(filter))}
-                                className={`text-[10px] tracking-widest font-semibold px-5 py-2 cursor-pointer relative transition-colors duration-300 ${activeFilter === filter
+                                className={`text-[9px] sm:text-[10px] tracking-widest font-semibold px-3 sm:px-5 py-2 cursor-pointer whitespace-nowrap relative transition-colors duration-300 ${activeFilter === filter
                                     ? 'text-zinc-700'
                                     : 'text-zinc-400 hover:text-zinc-600'
                                     }`}
@@ -96,10 +96,10 @@ export default function ProductGrid() {
                 <p ref={countRef} className="text-zinc-400 text-xs tracking-wider mb-6">{filteredProducts.length} PRODUCTS</p>
 
                 {/* Product grid with unique card design: separated image & details */}
-                <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-2 sm:gap-x-5 sm:gap-y-10 gap-x-3 gap-y-6">
+                <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-x-5 sm:gap-y-10 gap-x-3 gap-y-10">
                     {filteredProducts.map((product, id) => (
                         <Link href={`/products/${product.slug}`} key={`${product.slug}-${id}`} className="pgrid-card group cursor-pointer">
-                            <div className="bg-zinc-50 sm:rounded-xl rounded-lg overflow-hidden relative sm:h-[24rem] h-[15rem]">
+                            <div className="bg-zinc-50 sm:rounded-xl rounded-lg overflow-hidden relative sm:h-[24rem] h-[22rem]">
                                 <Image
                                     height={384}
                                     width={300}

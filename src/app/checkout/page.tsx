@@ -7,7 +7,7 @@ import { addOrder, Order } from "@/store/ordersSlice";
 import { EditorialNew } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ChevronLeft, ShieldCheck, Truck, CreditCard, Check, Loader2 } from "lucide-react";
@@ -44,6 +44,13 @@ export default function CheckoutPage() {
 
     const shipping = subtotal > 5000 ? 0 : 500;
     const total = subtotal + shipping;
+
+    // Redirect if cart is empty and not just successful
+    useEffect(() => {
+        if (cartItems.length === 0 && !orderSuccess) {
+            router.push('/products');
+        }
+    }, [cartItems, orderSuccess, router]);
 
     useGSAP(() => {
         gsap.from(".checkout-step", {
@@ -93,7 +100,7 @@ export default function CheckoutPage() {
         if (formData.cardNumber.replace(/\s/g, '').length !== 16) newErrors.cardNumber = 'Incomplete card number';
         if (!formData.expiry.match(/^(0[1-9]|1[0-2])\/\d{2}$/)) newErrors.expiry = 'Invalid date (MM/YY)';
         if (formData.cvv.length !== 3) newErrors.cvv = 'Invalid CVV';
-        
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -102,10 +109,10 @@ export default function CheckoutPage() {
         e.preventDefault();
         if (validate()) {
             setIsPlacingOrder(true);
-            
+
             // Simulate API delay
             await new Promise(resolve => setTimeout(resolve, 2000));
-            
+
             const newOrder: Order = {
                 id: `ORD-${Math.floor(Math.random() * 90000) + 10000}`,
                 date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
@@ -132,10 +139,10 @@ export default function CheckoutPage() {
 
             dispatch(addOrder(newOrder));
             dispatch(clearCart());
-            
+
             setIsPlacingOrder(false);
             setOrderSuccess(true);
-            
+
             // Redirect to profile after success animation
             setTimeout(() => {
                 router.push('/profile');
@@ -145,8 +152,12 @@ export default function CheckoutPage() {
 
     const isFormIncomplete = Object.values(formData).some(val => !val.trim());
 
+    if (cartItems.length === 0 && !orderSuccess) {
+        return null;
+    }
+
     return (
-        <main ref={containerRef} className="min-h-screen bg-zinc-50 pt-24 pb-20 px-6 md:px-12 lg:px-24">
+        <div ref={containerRef} className="w-full min-h-screen bg-zinc-50 pt-24 md:pt-32 pb-24 cursor-default selection:bg-zinc-800 selection:text-zinc-50">
             <div className="max-w-[120rem] mx-auto">
                 <Link href="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-800 transition-colors mb-12 group">
                     <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
@@ -157,19 +168,19 @@ export default function CheckoutPage() {
                     <div className="lg:col-span-7 space-y-16">
                         <section className="checkout-step">
                             <h1 className={`${EditorialNew.className} text-5xl md:text-7xl text-zinc-800 mb-12`}>Checkout</h1>
-                            
+
                             <form onSubmit={handleSubmit} className="space-y-16">
                                 {/* Contact Section */}
                                 <div className="space-y-10">
                                     <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-800 border-b border-zinc-200 pb-4">
                                         01. Contact Information
                                     </h2>
-                                    <InputField 
-                                        label="Email Address" 
-                                        id="email" 
-                                        type="email" 
-                                        value={formData.email} 
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, email: e.target.value})}
+                                    <InputField
+                                        label="Email Address"
+                                        id="email"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
                                         error={errors.email}
                                     />
                                 </div>
@@ -180,11 +191,11 @@ export default function CheckoutPage() {
                                         02. Shipping Address
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                        <InputField label="First Name" id="firstName" value={formData.firstName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, firstName: e.target.value})} />
-                                        <InputField label="Last Name" id="lastName" value={formData.lastName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, lastName: e.target.value})} />
-                                        <InputField className="md:col-span-2" label="Address" id="address" value={formData.address} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, address: e.target.value})} />
-                                        <InputField label="City" id="city" value={formData.city} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, city: e.target.value})} />
-                                        <InputField label="Postal Code" id="postalCode" value={formData.postalCode} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, postalCode: e.target.value})} />
+                                        <InputField label="First Name" id="firstName" value={formData.firstName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, firstName: e.target.value })} />
+                                        <InputField label="Last Name" id="lastName" value={formData.lastName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, lastName: e.target.value })} />
+                                        <InputField className="md:col-span-2" label="Address" id="address" value={formData.address} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, address: e.target.value })} />
+                                        <InputField label="City" id="city" value={formData.city} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, city: e.target.value })} />
+                                        <InputField label="Postal Code" id="postalCode" value={formData.postalCode} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, postalCode: e.target.value })} />
                                     </div>
                                 </div>
 
@@ -205,30 +216,30 @@ export default function CheckoutPage() {
                                                 <div className="w-full h-full rounded-full bg-zinc-800"></div>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 px-2">
-                                            <InputField 
-                                                className="md:col-span-2" 
-                                                label="Card Number" 
-                                                id="cardNumber" 
-                                                placeholder="XXXX XXXX XXXX XXXX" 
-                                                value={formData.cardNumber} 
+                                            <InputField
+                                                className="md:col-span-2"
+                                                label="Card Number"
+                                                id="cardNumber"
+                                                placeholder="XXXX XXXX XXXX XXXX"
+                                                value={formData.cardNumber}
                                                 onChange={handleCardNumberChange}
                                                 error={errors.cardNumber}
                                             />
-                                            <InputField 
-                                                label="Expiry Date" 
-                                                id="expiry" 
-                                                placeholder="MM/YY" 
-                                                value={formData.expiry} 
+                                            <InputField
+                                                label="Expiry Date"
+                                                id="expiry"
+                                                placeholder="MM/YY"
+                                                value={formData.expiry}
                                                 onChange={handleExpiryChange}
                                                 error={errors.expiry}
                                             />
-                                            <InputField 
-                                                label="CVV" 
-                                                id="cvv" 
-                                                placeholder="XXX" 
-                                                value={formData.cvv} 
+                                            <InputField
+                                                label="CVV"
+                                                id="cvv"
+                                                placeholder="XXX"
+                                                value={formData.cvv}
                                                 onChange={handleCVVChange}
                                                 error={errors.cvv}
                                             />
@@ -236,8 +247,8 @@ export default function CheckoutPage() {
                                     </div>
                                 </div>
 
-                                <button 
-                                    type="submit" 
+                                <button
+                                    type="submit"
                                     disabled={isFormIncomplete || isPlacingOrder || orderSuccess}
                                     className={`w-full py-5 rounded-full font-semibold tracking-[0.3em] text-[11px] transition-all uppercase shadow-lg flex items-center justify-center gap-3 ${orderSuccess ? 'bg-green-600 text-white' : 'bg-zinc-700 text-zinc-50 hover:bg-zinc-800 active:scale-[0.98]'} disabled:opacity-30 disabled:cursor-not-allowed disabled:active:scale-100`}
                                 >
@@ -255,9 +266,9 @@ export default function CheckoutPage() {
 
                     {/* Right Column: Order Summary */}
                     <div className="lg:col-span-5">
-                        <div className="summary-card sticky top-32 bg-white p-8 md:p-12 border border-zinc-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] rounded-3xl">
+                        <div className="summary-card sticky top-32 bg-white p-8 md:p-12 border border-zinc-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)]">
                             <h3 className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-800 border-b border-zinc-100 pb-4 mb-8">Order Summary</h3>
-                            
+
                             <div className="space-y-8 max-h-[40vh] overflow-y-auto pr-4 mb-8 custom-scrollbar">
                                 {cartItems.map((item) => {
                                     const product = getProduct(item.slug);
@@ -313,7 +324,7 @@ export default function CheckoutPage() {
                     </div>
                 </div>
             </div>
-            
+
             <style jsx global>{`
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 3px;
@@ -326,7 +337,7 @@ export default function CheckoutPage() {
                     border-radius: 10px;
                 }
             `}</style>
-        </main>
+        </div>
     );
 }
 

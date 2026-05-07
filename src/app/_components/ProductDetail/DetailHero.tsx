@@ -142,7 +142,7 @@ export default function DetailHero({ product }: Props) {
                             {product.collection}
                         </span>
 
-                        <h1 ref={nameRef} className={`xl:text-3xl lg:text-2xl text-2xl text-zinc-700 font-semibold tracking-tight mt-3 leading-tight whitespace-nowrap`}>
+                        <h1 ref={nameRef} className={`xl:text-3xl lg:text-2xl text-2xl text-zinc-700 font-semibold tracking-tight mt-3 leading-tight`}>
                             {product.name}
                         </h1>
 

@@ -47,7 +47,7 @@ const mockArticles: Article[] = [
         excerpt: "Traveling to the historical perfume capital of the world to find the purest jasmine and rose fields.",
         category: "Heritage",
         date: "Sep 15, 2026",
-        image: "/images/man-flower.jpg",
+        image: "/images/j2.jpg",
     },
     {
         id: 4,
@@ -55,7 +55,7 @@ const mockArticles: Article[] = [
         excerpt: "How to combine scents to create a bespoke aroma uniquely tailored to your skin chemistry.",
         category: "Guide",
         date: "Aug 30, 2026",
-        image: "/images/gold-perfume.jpg",
+        image: "/images/j3.jpg",
     },
     {
         id: 5,
@@ -63,7 +63,7 @@ const mockArticles: Article[] = [
         excerpt: "Exploring the profound psychological connection between scent and human memory. Why one drop can transport you decades back.",
         category: "Psychology",
         date: "Aug 12, 2026",
-        image: "/images/women-spray.jpg",
+        image: "/images/j4.jpg",
     },
     {
         id: 6,

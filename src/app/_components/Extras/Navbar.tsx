@@ -94,12 +94,12 @@ export default function Navbar() {
     return (
         <>
             <SideMenu />
-            <NavMenu open={navMenuOpen} />
+            <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
             <nav ref={navRef} className={`fixed z-40 lg:px-20 md:px-10 px-6 flex justify-between items-center w-full h-[4.5rem] transition-colors duration-300 ${scrolled && !navMenuOpen ? 'shadow' : ''} ${isDark ? "bg-zinc-50 text-zinc-700" : "text-zinc-50"}`}>
-                <span onClick={() => setNavMenuOpen(!navMenuOpen)} className={`${navMenuOpen ? 'space-y-0' : 'space-y-2'} sm:hidden block cursor-pointer`}>
-                    <div className={`${isDark || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? 'rotate-45' : 'rotate-0'} transition-all duration-500 w-7 h-[1px]`}></div>
-                    <div className={`${isDark || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} ${navMenuOpen ? '-rotate-45' : 'rotate-0'} transition-all duration-500 w-7 h-[1px]`}></div>
-                </span>
+                <div onClick={() => setNavMenuOpen(!navMenuOpen)} className="sm:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer relative z-50">
+                    <div className={`${isDark || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} transition-all duration-300 w-6 h-[1.5px] absolute ${navMenuOpen ? 'rotate-45' : '-translate-y-1'}`}></div>
+                    <div className={`${isDark || navMenuOpen ? "bg-zinc-700" : "bg-zinc-50"} transition-all duration-300 w-6 h-[1.5px] absolute ${navMenuOpen ? '-rotate-45' : 'translate-y-1'}`}></div>
+                </div>
                 <Link href="/" className="w-32">
                     <h1 className={`${lobster.className} text-center sm:text-start text-[1.7rem] transition-colors duration-500 ease-in-out ${isDark || navMenuOpen ? "text-zinc-700" : "text-zinc-50"}`}>Zolivine</h1>
                 </Link>

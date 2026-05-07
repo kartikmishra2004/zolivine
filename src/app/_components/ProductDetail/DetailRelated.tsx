@@ -53,7 +53,7 @@ export default function DetailRelated({ currentSlug }: Props) {
                     You may <span className={`font-normal ${EditorialNew.className}`}>also like</span>
                 </h2>
 
-                <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-2 sm:gap-5 gap-3">
+                <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 sm:gap-5 gap-10">
                     {related.map((p, i) => (
                         <Link
                             key={p.slug}
@@ -61,7 +61,7 @@ export default function DetailRelated({ currentSlug }: Props) {
                             ref={el => { cardRefs.current[i] = el; }}
                             className="group cursor-pointer"
                         >
-                            <div className="bg-[#eeeeee] sm:rounded-xl rounded-lg overflow-hidden relative sm:h-[22rem] h-[14rem]">
+                            <div className="bg-[#eeeeee] sm:rounded-xl rounded-lg overflow-hidden relative sm:h-[22rem] h-[20rem]">
                                 <Image
                                     height={352} width={300} alt={p.name} src={p.image}
                                     className="w-full h-full object-cover select-none group-hover:scale-[1.04] transition-transform ease-out duration-700"
