@@ -25,7 +25,6 @@ export default function Navbar() {
     const isDark = scrolled || isLightPage;
     const navRef = useRef<HTMLElement | null>(null);
     const shopRef = useRef<HTMLSpanElement | null>(null);
-    const philosophyRef = useRef<HTMLSpanElement | null>(null);
     const galleryRef = useRef<HTMLSpanElement | null>(null);
     const journalRef = useRef<HTMLSpanElement | null>(null);
     const lastScrollY = useRef<number>(0);
@@ -36,11 +35,6 @@ export default function Navbar() {
             name: "SHOP",
             ref: shopRef,
             src: "/products",
-        },
-        {
-            name: "PHILOSOPHY",
-            ref: philosophyRef,
-            src: "/philosophy",
         },
         {
             name: "GALLERY",

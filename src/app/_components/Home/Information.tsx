@@ -1,6 +1,5 @@
 'use client'
 import { EditorialNew } from "@/utils/fonts";
-import ArrowButton from "../Extras/ArrowButton";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import gsap from 'gsap';
@@ -16,7 +15,6 @@ export default function Information() {
 
     const animated = useAnimation((s) => s.hasAnimated('home-information'));
     const setAnimated = useAnimation((s) => s.setAnimated);
-    const [arrowHovered, setArrowHovered] = useState(false);
     const sectionRef = useRef(null);
     const title1 = useRef(null);
     const title2 = useRef(null);
@@ -93,14 +91,6 @@ export default function Information() {
                 </div>
                 <div className="flex w-full items-center">
                     <div className="w-[45%] sm:flex hidden justify-center lg:pr-42">
-                        <Link href='/philosophy'>
-                            <div onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} className="relative cursor-pointer w-max h-max -rotate-45">
-                                <ArrowButton hover={arrowHovered} varient="lg" />
-                            </div>
-                        </Link>
-                        <Link href='/philosophy'>
-                            <p onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} className="text-zinc-500 text-xs px-8 pt-6 tracking-wide font-semibold underline">OUR <br />PHILOSOPHY</p>
-                        </Link>
                     </div>
                     <div className="sm:w-[55%] overflow-hidden">
                         <h1 ref={title3} className={`${EditorialNew.className} xl:text-[10rem] lg:text-[8rem] md:text-[6rem] text-[3.5rem] lg:leading-28 md:leading-20 leading-12 lg:pt-8 pt-2 sm:px-4.5 px-7 text-zinc-700 font-normal tracking-tight`}>HIDE</h1>
