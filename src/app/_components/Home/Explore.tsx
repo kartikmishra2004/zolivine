@@ -9,6 +9,8 @@ import ArrowButton from "../Extras/ArrowButton";
 import { useGSAP } from "@gsap/react";
 import { EditorialNew } from "@/utils/fonts";
 import { useAnimation } from '@/app/_context/AnimationContext';
+import { useAppSelector } from '@/store/hooks';
+import { selectProductsByCollection } from '@/store/productsSlice';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,47 +31,10 @@ export default function Explore() {
   const [arrow1Hovered, setArrow1Hovered] = useState(false);
   const [arrow2Hovered, setArrow2Hovered] = useState(false);
 
-  const pureBrilliance = [
-    {
-      title: 'PURE BRILLIANCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹899',
-      image: '/images/1.png'
-    },
-    {
-      title: 'PURE BRILLIANCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹899',
-      image: '/images/2.png'
-    },
-    {
-      title: 'PURE BRILLIANCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹899',
-      image: '/images/3.png'
-    },
-  ]
-
-  const gildedEssence = [
-    {
-      title: 'GILDED ESSENCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹1299',
-      image: '/images/4.png'
-    },
-    {
-      title: 'GILDED ESSENCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹1299',
-      image: '/images/5.png'
-    },
-    {
-      title: 'GILDED ESSENCE',
-      description: 'Aha brightning exfoliant cleanser/face wash',
-      price: '₹1299',
-      image: '/images/6.png'
-    },
-  ]
+  const selectPB = useAppSelector(selectProductsByCollection);
+  const selectGE = useAppSelector(selectProductsByCollection);
+  const pureBrilliance = selectPB('PURE BRILLIANCE');
+  const gildedEssence = selectGE('GILDED ESSENCE');
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -245,15 +210,15 @@ export default function Explore() {
           <div className="w-[50.1%] lg:px-16 px-7 absolute right-0 bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide">
             <div className="flex-nowrap flex gap-4">
               {pureBrilliance.map((item, id) => (
-                <Link href={'/products'} key={id} className="product-card1 bg-red-200 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={`/products/${item.slug}`} key={id} className="product-card1 bg-red-200 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
                   <Image height={416} width={304} alt='product-img' className="absolute select-none w-full h-full object-cover z-0" src={item.image} />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
-                      <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.title}</div>
+                      <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.collection}</div>
                       <span className="bg-zinc-50 flex justify-center items-center w-7 rounded-full h-7"><ShoppingBag size={14} strokeWidth={1} /></span>
                     </div>
                     <div className="flex justify-between">
-                      <p className="text-sm tracking-wider text-zinc-700 leading-4">{item.description}</p>
+                      <p className="text-sm tracking-wider text-zinc-700 leading-4">{item.name}</p>
                       <p className="text-sm my-auto tracking-wider text-zinc-700">{item.price}</p>
                     </div>
                   </div>
@@ -299,15 +264,15 @@ export default function Explore() {
           <div className="w-[50.1%] lg:px-16 px-7 absolute bottom-[150px] h-[57%] overflow-x-auto flex items-center scroll-hide" ref={scrollContainerRef}>
             <div className="flex-nowrap flex gap-4">
               {gildedEssence.map((item, id) => (
-                <Link href={'/products'} key={id} className="bg-[#d8cec4] product-card2 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
+                <Link href={`/products/${item.slug}`} key={id} className="bg-[#d8cec4] product-card2 sm:min-w-[19rem] min-w-[16rem] h-[22rem] sm:h-[26rem] rounded-xl relative overflow-hidden">
                   <Image height={416} width={304} className="absolute select-none w-full h-full object-cover z-0" src={item.image} alt="product-img" />
                   <div className="h-full z-10 absolute w-full flex flex-col justify-between p-4">
                     <div className="flex justify-between">
-                      <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.title}</div>
+                      <div className="text-[11px] tracking-wider bg-zinc-50 flex justify-center items-center px-6 rounded-xl text-zinc-700">{item.collection}</div>
                       <span className="bg-zinc-50 flex justify-center items-center w-7 rounded-full h-7"><ShoppingBag size={14} strokeWidth={1} /></span>
                     </div>
                     <div className="flex justify-between">
-                      <p className="text-sm tracking-wider text-zinc-700 leading-4">{item.description}</p>
+                      <p className="text-sm tracking-wider text-zinc-700 leading-4">{item.name}</p>
                       <p className="text-sm my-auto tracking-wider text-zinc-700">{item.price}</p>
                     </div>
                   </div>

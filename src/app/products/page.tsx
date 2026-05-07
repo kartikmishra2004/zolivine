@@ -1,7 +1,15 @@
+import ProductHero from "@/app/_components/Products/ProductHero";
+import ProductMarquee from "@/app/_components/Products/ProductMarquee";
+import ProductGrid from "@/app/_components/Products/ProductGrid";
+import Footer from "@/app/_components/Extras/Footer";
+
 export default function Products() {
     return (
-        <section className="w-full h-screen bg-zinc-800 text-zinc-50 flex justify-center items-center">
-            Products
+        <section>
+            <ProductHero />
+            <ProductMarquee />
+            <ProductGrid />
+            <Footer />
         </section>
     )
 }

@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@reduxjs/toolkit": "^2.11.2",
     "@studio-freight/lenis": "^1.0.42",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
