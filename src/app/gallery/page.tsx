@@ -6,29 +6,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { X } from "lucide-react";
 
-const imagesCol1 = [
-    '/images/1.png',
-    '/images/gold-perfume.jpg',
-    '/images/moa1.jpg',
-    '/images/man-flower.jpg',
-    '/images/5.png',
-];
-
-const imagesCol2 = [
-    '/images/2.png',
-    '/images/women-spray.jpg',
-    '/images/6.png',
-    '/images/man-spray-min.jpg',
-    '/images/blowup.jpg',
-];
-
-const imagesCol3 = [
-    '/images/3.png',
-    '/images/signup.jpg',
-    '/images/4.png',
-    '/images/login.jpg',
-    '/images/man.jpg',
-];
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchGalleryImages, selectGalleryImages, selectGalleryStatus } from "@/store/gallerySlice";
 
 export default function Gallery() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -38,6 +18,16 @@ export default function Gallery() {
     
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
     const [isHovering, setIsHovering] = useState(false);
+
+    const dispatch = useAppDispatch();
+    const { imagesCol1, imagesCol2, imagesCol3 } = useAppSelector(selectGalleryImages);
+    const status = useAppSelector(selectGalleryStatus);
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchGalleryImages());
+        }
+    }, [status, dispatch]);
 
     // Drag & Scroll Refs
     const colRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
@@ -99,12 +89,12 @@ export default function Gallery() {
             if (!colRefs[0].current || !colRefs[1].current || !colRefs[2].current) return;
             
             const heights = [
-                colRefs[0].current.children[0].getBoundingClientRect().height,
-                colRefs[1].current.children[0].getBoundingClientRect().height,
-                colRefs[2].current.children[0].getBoundingClientRect().height,
+                colRefs[0].current?.children[0]?.getBoundingClientRect().height,
+                colRefs[1].current?.children[0]?.getBoundingClientRect().height,
+                colRefs[2].current?.children[0]?.getBoundingClientRect().height,
             ];
 
-            if (!heights[0]) return; // Wait until layout is calculated
+            if (!heights[0] || !heights[1] || !heights[2]) return; // Wait until layout is calculated
 
             if (!initialized) {
                 offsets[0] = 0;
@@ -228,13 +218,20 @@ export default function Gallery() {
             </div>
 
             {/* Infinite Scroll Container */}
-            <div className="w-[120%] h-[150vh] px-4 md:px-8 opacity-50 hover:opacity-100 transition-opacity duration-1000 gallery-container rotate-[-6deg] scale-[1.15]">
+            <div className={`w-[120%] h-[150vh] px-4 md:px-8 opacity-50 hover:opacity-100 transition-opacity duration-1000 gallery-container rotate-[-6deg] scale-[1.15] ${status !== 'succeeded' ? 'invisible' : 'visible'}`}>
                 <div ref={containerRef} className="w-full h-full flex gap-4 md:gap-8">
                     <Column images={imagesCol1} colIndex={0} />
                     <Column images={imagesCol2} colIndex={1} />
                     <Column images={imagesCol3} colIndex={2} hiddenOnMobile={true} />
                 </div>
             </div>
+
+            {/* Loading Indicator */}
+            {status !== 'succeeded' && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center">
+                    <div className="w-10 h-10 border-2 border-zinc-600 border-t-zinc-50 rounded-full animate-spin"></div>
+                </div>
+            )}
 
             {/* Lightbox Modal */}
             {selectedImg && (
