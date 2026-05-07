@@ -134,8 +134,8 @@ export default function Journal() {
                                 </p>
                             </div>
                             <div className="mt-8 md:mt-0 shrink-0">
-                                <button className="flex items-center gap-2 border-b border-zinc-800 pb-1 text-xs md:text-sm tracking-widest font-bold uppercase group-hover:text-zinc-500 group-hover:border-zinc-500 transition-colors duration-300">
-                                    Read Article <ArrowUpRight size={18} strokeWidth={1.5} />
+                                <button className="px-8 py-4 bg-zinc-700 text-zinc-50 rounded-full font-semibold tracking-[0.3em] text-[10px] cursor-pointer hover:bg-zinc-800 transition-colors uppercase flex items-center gap-2">
+                                    Read Article <ArrowUpRight size={16} strokeWidth={2} />
                                 </button>
                             </div>
                         </div>

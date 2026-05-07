@@ -113,10 +113,10 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-                <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} href={'/products'} ref={buttonRef} className="sm:w-[47vw] w-4/5 scale-0 sm:h-[3.7rem] h-[3rem] cursor-pointer rounded-4xl bg-zinc-50 relative flex justify-center items-center mb-20 sm:mb-10">
-                    <h1 className="text-zinc-700 underline sm:text-xs text-[10px] tracking-wider">EXPLORE ALL PRODUCTS</h1>
-                    <ArrowButton className="sm:flex hidden" hover={arrowHovered} />
-                    <ArrowButton varient="sm" className="sm:hidden flex" hover={arrowHovered} />
+                <Link onMouseEnter={() => setArrowHovered(true)} onMouseLeave={() => setArrowHovered(false)} href={'/products'} ref={buttonRef} className="sm:w-[30vw] w-4/5 scale-0 sm:h-[4rem] h-[3.5rem] cursor-pointer rounded-full bg-zinc-700 text-zinc-50 hover:bg-zinc-800 transition-all duration-500 relative flex justify-center items-center mb-24 sm:mb-16 group shadow-xl">
+                    <h1 className="text-[11px] tracking-[0.3em] font-bold uppercase">EXPLORE ALL PRODUCTS</h1>
+                    <ArrowButton className="sm:flex hidden ml-4" hover={arrowHovered} />
+                    <ArrowButton varient="sm" className="sm:hidden flex ml-3" hover={arrowHovered} />
                 </Link>
             </div>
         </section>

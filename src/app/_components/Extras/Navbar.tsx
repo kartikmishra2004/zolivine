@@ -21,7 +21,7 @@ export default function Navbar() {
     const isCartOpen = useAppSelector(selectIsCartOpen);
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
     // Pages with light backgrounds need dark navbar text from the start
-    const isLightPage = /^\/products\/[^/]+$/.test(pathname) || /^\/auth/.test(pathname) || /^\/journal/.test(pathname);
+    const isLightPage = /^\/products\/[^/]+$/.test(pathname) || /^\/auth/.test(pathname) || /^\/journal/.test(pathname) || /^\/checkout/.test(pathname);
     const isDark = scrolled || isLightPage;
     const navRef = useRef<HTMLElement | null>(null);
     const shopRef = useRef<HTMLSpanElement | null>(null);

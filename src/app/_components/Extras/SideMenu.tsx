@@ -77,9 +77,13 @@ export default function SideMenu() {
                                         return total + (price * item.quantity);
                                     }, 0).toLocaleString()}</span>
                                 </div>
-                                <button className="w-full bg-zinc-700 text-zinc-50 text-[11px] tracking-[0.3em] font-bold py-4 rounded-full hover:bg-zinc-800 transition-colors">
+                                <Link
+                                    href="/checkout"
+                                    onClick={() => dispatch(setCartOpen(false))}
+                                    className="w-full bg-zinc-700 text-zinc-50 text-[11px] tracking-[0.3em] font-semibold py-4 rounded-full cursor-pointer transition-colors hover:bg-zinc-800 flex justify-center items-center uppercase"
+                                >
                                     PROCEED TO CHECKOUT
-                                </button>
+                                </Link>
                             </div>
                         </>
                     ) : (
@@ -95,10 +99,10 @@ export default function SideMenu() {
                                     ref={buttonRef}
                                     href={'/products'}
                                     onClick={() => dispatch(setCartOpen(false))}
-                                    className="lg:w-[70%] w-[90%] h-[3rem] cursor-pointer rounded-4xl border border-[#c4c4c4] relative flex justify-center items-center"
+                                    className="lg:w-[80%] w-full py-4 cursor-pointer rounded-full bg-zinc-700 text-zinc-50 transition-colors hover:bg-zinc-800 relative flex justify-center items-center"
                                 >
-                                    <h1 className="text-zinc-700 underline text-[10px] lg:pr-0 pr-5 lg:text-xs tracking-wider uppercase">Browse Products</h1>
-                                    <ArrowButton hover={arrowHovered} varient="sm" />
+                                    <h1 className="text-[11px] tracking-[0.3em] font-semibold uppercase">Browse Products</h1>
+                                    <ArrowButton hover={arrowHovered} varient="sm" className="ml-3" />
                                 </Link>
                             </div>
                         </div>
