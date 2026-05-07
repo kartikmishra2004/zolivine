@@ -55,8 +55,8 @@ export default function Journal() {
         });
 
         // Staggered reveal for article cards
-        const articleCards = gsap.utils.toArray('.journal-card');
-        articleCards.forEach((card: any) => {
+        const articleCards = gsap.utils.toArray<HTMLElement>('.journal-card');
+        articleCards.forEach((card) => {
             gsap.from(card, {
                 scrollTrigger: {
                     trigger: card,

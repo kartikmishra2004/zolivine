@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
-import { EditorialNew } from "@/utils/fonts";
 import { Product } from "@/utils/products";
 import { useAnimation } from '@/app/_context/AnimationContext';
 import { useAppDispatch, useAppSelector } from "@/store/hooks";

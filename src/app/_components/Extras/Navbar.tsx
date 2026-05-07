@@ -2,7 +2,7 @@
 import { RefObject, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ShoppingCart, User, LogOut } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SideMenu from "./SideMenu";
@@ -10,15 +10,14 @@ import { lobster } from "@/utils/fonts";
 import NavMenu from "./NavMenu";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { selectCartCount } from "@/store/cartSlice";
-import { selectIsCartOpen, setCartOpen } from "@/store/uiSlice";
-import { selectIsAuthenticated, logout } from "@/store/authSlice";
+import { setCartOpen } from "@/store/uiSlice";
+import { selectIsAuthenticated } from "@/store/authSlice";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const pathname = usePathname();
     const dispatch = useAppDispatch();
     const cartCount = useAppSelector(selectCartCount);
-    const isCartOpen = useAppSelector(selectIsCartOpen);
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
     // Pages with light backgrounds need dark navbar text from the start
     const isLightPage = /^\/products\/[^/]+$/.test(pathname) || /^\/auth/.test(pathname) || /^\/journal/.test(pathname) || /^\/checkout/.test(pathname) || /^\/profile/.test(pathname);

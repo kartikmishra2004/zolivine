@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
 interface User {
     id: string;
@@ -26,7 +27,7 @@ const initialState: AuthState = {
 // Mock API thunks
 export const loginThunk = createAsyncThunk(
     'auth/login',
-    async (credentials: any, { rejectWithValue }) => {
+    async (credentials: { email: string; password: string }, { rejectWithValue }) => {
         try {
             // Simulated API call
             await new Promise(resolve => setTimeout(resolve, 1500));
@@ -35,23 +36,23 @@ export const loginThunk = createAsyncThunk(
                 user: { id: '1', email: credentials.email, name: 'Guest User' },
                 token: 'mock-jwt-token',
             };
-        } catch (err: any) {
-            return rejectWithValue(err.message);
+        } catch (err: unknown) {
+            return rejectWithValue(err instanceof Error ? err.message : 'Login failed');
         }
     }
 );
 
 export const signupThunk = createAsyncThunk(
     'auth/signup',
-    async (userData: any, { rejectWithValue }) => {
+    async (userData: { email: string; name: string }, { rejectWithValue }) => {
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
             return {
                 user: { id: '2', email: userData.email, name: userData.name },
                 token: 'mock-jwt-token',
             };
-        } catch (err: any) {
-            return rejectWithValue(err.message);
+        } catch (err: unknown) {
+            return rejectWithValue(err instanceof Error ? err.message : 'Signup failed');
         }
     }
 );
@@ -107,9 +108,9 @@ const authSlice = createSlice({
 
 export const { logout, clearError } = authSlice.actions;
 
-export const selectUser = (state: any) => state.auth.user;
-export const selectIsAuthenticated = (state: any) => state.auth.isAuthenticated;
-export const selectAuthLoading = (state: any) => state.auth.loading;
-export const selectAuthError = (state: any) => state.auth.error;
+export const selectUser = (state: RootState) => state.auth.user;
+export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
+export const selectAuthLoading = (state: RootState) => state.auth.loading;
+export const selectAuthError = (state: RootState) => state.auth.error;
 
 export default authSlice.reducer;

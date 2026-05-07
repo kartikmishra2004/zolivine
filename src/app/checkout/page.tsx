@@ -7,7 +7,7 @@ import { addOrder, Order } from "@/store/ordersSlice";
 import { EditorialNew } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ChevronLeft, ShieldCheck, Truck, CreditCard, Check, Loader2 } from "lucide-react";
@@ -169,7 +169,7 @@ export default function CheckoutPage() {
                                         id="email" 
                                         type="email" 
                                         value={formData.email} 
-                                        onChange={(e: any) => setFormData({...formData, email: e.target.value})}
+                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, email: e.target.value})}
                                         error={errors.email}
                                     />
                                 </div>
@@ -180,11 +180,11 @@ export default function CheckoutPage() {
                                         02. Shipping Address
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                        <InputField label="First Name" id="firstName" value={formData.firstName} onChange={(e: any) => setFormData({...formData, firstName: e.target.value})} />
-                                        <InputField label="Last Name" id="lastName" value={formData.lastName} onChange={(e: any) => setFormData({...formData, lastName: e.target.value})} />
-                                        <InputField className="md:col-span-2" label="Address" id="address" value={formData.address} onChange={(e: any) => setFormData({...formData, address: e.target.value})} />
-                                        <InputField label="City" id="city" value={formData.city} onChange={(e: any) => setFormData({...formData, city: e.target.value})} />
-                                        <InputField label="Postal Code" id="postalCode" value={formData.postalCode} onChange={(e: any) => setFormData({...formData, postalCode: e.target.value})} />
+                                        <InputField label="First Name" id="firstName" value={formData.firstName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, firstName: e.target.value})} />
+                                        <InputField label="Last Name" id="lastName" value={formData.lastName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, lastName: e.target.value})} />
+                                        <InputField className="md:col-span-2" label="Address" id="address" value={formData.address} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, address: e.target.value})} />
+                                        <InputField label="City" id="city" value={formData.city} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, city: e.target.value})} />
+                                        <InputField label="Postal Code" id="postalCode" value={formData.postalCode} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, postalCode: e.target.value})} />
                                     </div>
                                 </div>
 
@@ -330,7 +330,16 @@ export default function CheckoutPage() {
     );
 }
 
-const InputField = ({ label, id, type = "text", value, onChange, placeholder, error, className = "" }: any) => (
+const InputField = ({ label, id, type = "text", value, onChange, placeholder, error, className = "" }: {
+    label: string;
+    id: string;
+    type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
+    error?: string;
+    className?: string;
+}) => (
     <div className={`space-y-2 relative ${className}`}>
         <input
             type={type}

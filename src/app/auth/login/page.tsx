@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { EditorialNew, lobster } from "@/utils/fonts";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loginThunk, selectAuthLoading, selectAuthError, clearError, selectIsAuthenticated } from "@/store/authSlice";
-import { ArrowRight, Loader2, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { ArrowRight, Loader2, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -174,7 +174,7 @@ export default function LoginPage() {
 
                     <div ref={el => { contentRefs.current[6] = el; }} className="mt-12 text-center">
                         <p className="text-xs text-zinc-500">
-                            Don't have an account?
+                            Don&apos;t have an account?
                             <Link href="/auth/signup" onClick={() => dispatch(clearError())} className="ml-2 font-semibold text-zinc-800 hover:text-zinc-500 transition-colors uppercase tracking-wider text-[10px]">
                                 Create one
                             </Link>
